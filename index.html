@@ -1498,63 +1498,49 @@
         });
    <script>
 <script>
-// EMERGENCY FIX - SAB KUCH IGNORE KAR KE DIKHAO
-window.addEventListener('load', function() {
+// NUCLEAR OPTION - SCRIPT TAG SE ARRAY NIKAALO
+document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
-
-        console.log("Dreams Online Shop: Fix Chal Gaya");
-
         var allProducts = [];
+        var scripts = document.getElementsByTagName('script');
 
-        // Poori window scan karo
-        for(var key in window){
-            try {
-                if(Array.isArray(window[key]) && window[key].length > 0){
-                    var firstItem = window[key][0];
-                    if(typeof firstItem === 'object' && (firstItem.name || firstItem.title) && (firstItem.link || firstItem.url || firstItem.href)){
-                        allProducts = allProducts.concat(window[key]);
-                        console.log("Mila: ", key, window[key].length);
-                    }
+        for (var i = 0; i < scripts.length; i++) {
+            var code = scripts[i].innerHTML;
+            // const products = [...] wala pattern dhundo
+            var matches = code.match(/(const|let|var)\s+\w+\s*=\s*(\[[\s\S]*?\]);/g);
+            if (matches) {
+                for(var j=0; j<matches.length; j++){
+                    try {
+                        var arr = eval(matches[j].split('=')[1].replace(/;$/, ''));
+                        if(Array.isArray(arr) && arr[0] && arr[0].name){
+                            allProducts = allProducts.concat(arr);
+                        }
+                    } catch(e){}
                 }
-            } catch(e){}
-        }
-
-        console.log("Total Products Mile: ", allProducts.length);
-
-        // Loading wala msg hatao
-        var loading = document.getElementById('loading-msg') || document.querySelector('.loading');
-        if(loading) loading.remove();
-
-        // Body me hi ek naya box bana do agar pehle se na ho
-        var container = document.getElementById('product-grid') || document.querySelector('.grid') || document.querySelector('main');
-
-        if(!container){
-            container = document.createElement('div');
-            container.id = 'product-grid';
-            document.body.appendChild(container);
-        }
-
-        // Ab products dikhao
-        if(allProducts.length > 0){
-            var html = '';
-            for(var i=0; i<allProducts.length; i++){
-                var p = allProducts[i];
-                var name = p.name || p.title || 'Product';
-                var url = p.link || p.url || p.href || '#';
-                html += `<div style="background:#1a1a1a;padding:15px;border-radius:8px;margin:10px;border:1px solid #333;font-family:sans-serif;">
-                    <h3 style="font-size:14px;margin:0 0 10px;color:#fff;">${name}</h3>
-                    <a style="display:block;background:#FF9900;color:#000;text-align:center;padding:10px;text-decoration:none;border-radius:5px;font-weight:600;" href="${url}" target="_blank">Buy on Amazon</a>
-                </div>`;
             }
-            container.innerHTML = html;
-            container.style.display = 'grid';
-            container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(240px, 1fr))';
-            container.style.gap = '15px';
-            container.style.padding = '20px';
-        } else {
-            container.innerHTML = '<h2 style="color:white;text-align:center;padding:50px;">Products nahi mile. Console check karo F12 daba kar.</h2>';
         }
-    }, 2000); // 2 second wait
+
+        // Loading hatao
+        document.body.innerHTML = '';
+
+        // Naya container
+        var container = document.createElement('div');
+        container.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:15px;padding:20px;background:#000;min-height:100vh;';
+        document.body.appendChild(container);
+
+        // Products dikhao
+        if(allProducts.length > 0){
+            container.innerHTML = allProducts.map(p => `
+                <div style="background:#1a1a1a;padding:15px;border-radius:8px;border:1px solid #333;">
+                    <h3 style="font-size:14px;margin:0 0 10px;color:#fff;font-family:sans-serif;">${p.name || p.title}</h3>
+                    <a style="display:block;background:#FF9900;color:#000;text-align:center;padding:10px;text-decoration:none;border-radius:5px;font-weight:600;" href="${p.link || p.url || '#'}" target="_blank">Buy on Amazon</a>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<h1 style="color:white;text-align:center;">Bhai arrays mile hi nahi. Tumne kya banaya hai?</h1>';
+        }
+    }, 1000);
 });
 </script>
 </body>
+</html>
