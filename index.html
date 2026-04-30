@@ -1496,49 +1496,38 @@
                 console.error(error);
             }
         });
-   <script>
+        </script>
+ <style>
+/* CSS والا طریقہ - سب سے تیز */
+.filter-btn,
+button {
+    display: block;
+}
+/* 1. Adult Toys والا بٹن غائب */
+button:has(:contains("Adult Toys")),
+.filter-btn:has(:contains("Adult Toys")) {
+    display: none !important;
+}
+/* 2. ساری Adult Toys کی پروڈکٹس غائب */
+.card.toy {
+    display: none !important;
+}
+</style>
+
 <script>
-// NUCLEAR OPTION - SCRIPT TAG SE ARRAY NIKAALO
+// JS والا بیک اپ - اگر AJAX سے لوڈ ہوں تو
 document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        var allProducts = [];
-        var scripts = document.getElementsByTagName('script');
-
-        for (var i = 0; i < scripts.length; i++) {
-            var code = scripts[i].innerHTML;
-            // const products = [...] wala pattern dhundo
-            var matches = code.match(/(const|let|var)\s+\w+\s*=\s*(\[[\s\S]*?\]);/g);
-            if (matches) {
-                for(var j=0; j<matches.length; j++){
-                    try {
-                        var arr = eval(matches[j].split('=')[1].replace(/;$/, ''));
-                        if(Array.isArray(arr) && arr[0] && arr[0].name){
-                            allProducts = allProducts.concat(arr);
-                        }
-                    } catch(e){}
-                }
+    setInterval(function() {
+        // بٹن ہٹاؤ
+        document.querySelectorAll('button, li, a').forEach(el => {
+            if(el.textContent.includes('Adult Toys')) {
+                el.remove();
             }
-        }
-
-        // Loading hatao
-        document.body.innerHTML = '';
-
-        // Naya container
-        var container = document.createElement('div');
-        container.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:15px;padding:20px;background:#000;min-height:100vh;';
-        document.body.appendChild(container);
-
-        // Products dikhao
-        if(allProducts.length > 0){
-            container.innerHTML = allProducts.map(p => `
-                <div style="background:#1a1a1a;padding:15px;border-radius:8px;border:1px solid #333;">
-                    <h3 style="font-size:14px;margin:0 0 10px;color:#fff;font-family:sans-serif;">${p.name || p.title}</h3>
-                    <a style="display:block;background:#FF9900;color:#000;text-align:center;padding:10px;text-decoration:none;border-radius:5px;font-weight:600;" href="${p.link || p.url || '#'}" target="_blank">Buy on Amazon</a>
-                </div>
-            `).join('');
-        } else {
-            container.innerHTML = '<h1 style="color:white;text-align:center;">Bhai arrays mile hi nahi. Tumne kya banaya hai?</h1>';
-        }
+        });
+        // پروڈکٹس ہٹاؤ
+        document.querySelectorAll('.card.toy').forEach(el => {
+            el.remove();
+        });
     }, 1000);
 });
 </script>
