@@ -1407,21 +1407,9 @@
         );
     }
 
-    // 4. Main Page per Category 2 sirf
-if (category === 'All' &&!term) {
-    const categoryCount = {};
-    const limitedProducts = [];
-
-    for (let i = 0; i < productsToRender.length; i++) {
-        const cat = productsToRender[i].cat || 'Other';
-        if (!categoryCount[cat]) categoryCount[cat] = 0;
-
-        if (categoryCount[cat] < 20) { // yahan 2 se 20 kar diya
-            limitedProducts.push(productsToRender[i]);
-            categoryCount[cat]++;
-        }
-    }
-    productsToRender = limitedProducts;
+    // Limit for Main Page - 200 Products Only
+if (category === 'All' && !term) {
+    productsToRender = productsToRender.slice(0, 200);
 }
 
     // 5. No Products Found
