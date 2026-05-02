@@ -1359,10 +1359,9 @@
                     return { ...p, cat: c };
         
                 });
+                // DREAMS SHOP FIX - FINAL SIMPLE
 
-// DREAMS SHOP FIX - 1200 PRODUCTS + ALL CATEGORIES
-
-// 1. Images سب کی چھوٹی کر دو - سائٹ تیز ہو جائے گی
+// 1. Images چھوٹی کر دو - بس یہ کرنا ہے
 for (let i = 0; i < allProducts.length; i++) {
     if(allProducts[i].image) {
         allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
@@ -1370,24 +1369,40 @@ for (let i = 0; i < allProducts.length; i++) {
     }
 }
 
-// 2. Main page کے لیے ہر Category سے صرف 2 Products نکالو
-const categoryCount = {};
-const homePageProducts = [];
+// 2. Original Products Save کر لو
+window.masterProducts = [...allProducts];
 
-for (let i = 0; i < allProducts.length; i++) {
-    const cat = allProducts[i].cat || 'Other';
+// 3. Main page کے لیے Filter بناؤ
+const categoryCount = {};
+const filteredForHome = [];
+
+for (let i = 0; i < window.masterProducts.length; i++) {
+    const cat = window.masterProducts[i].cat || 'Other';
     if (!categoryCount[cat]) categoryCount[cat] = 0;
 
-    if (categoryCount[cat] < 2) { // ہر category سے صرف 2
-        homePageProducts.push(allProducts[i]);
+    if (categoryCount[cat] < 2) {
+        filteredForHome.push(window.masterProducts[i]);
         categoryCount[cat]++;
     }
 }
 
-// 3. اب render کے لیے homePageProducts استعمال کرو
-const displayProducts = homePageProducts;
+// 4. اب allProducts کو Home والے سے Replace کرو
+allProducts.length = 0;
+allProducts.push(...filteredForHome);
+
+// 5. Category Click Function - Global بناؤ
+window.showCategoryAll = function(categoryName) {
+    const filtered = window.masterProducts.filter(p => p.cat === categoryName);
+    allProducts.length = 0;
+    allProducts.push(...filtered);
+    // اب تمہارا render function دوبارہ چلاؤ
+    // اگر render کا نام pata hai to yahan likh do
+    location.reload(); // فی الحال Reload کر دے گا
+}
 
 // DREAMS SHOP FIX END
+
+
                 const grid = document.getElementById('grid');
                 const searchInput = document.getElementById('search');
                 const filterContainer = document.getElementById('filters');
