@@ -1359,47 +1359,14 @@
                     return { ...p, cat: c };
         
                 });
-                // DREAMS SHOP FIX - FINAL SIMPLE
-
-// 1. Images چھوٹی کر دو - بس یہ کرنا ہے
+                // DREAMS SHOP FIX - MASTER PRODUCTS
 for (let i = 0; i < allProducts.length; i++) {
     if(allProducts[i].image) {
         allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
         allProducts[i].image = allProducts[i].image.replace('_SL1500_', '_SL300_');
     }
 }
-
-// 2. Original Products Save کر لو
 window.masterProducts = [...allProducts];
-
-// 3. Main page کے لیے Filter بناؤ
-const categoryCount = {};
-const filteredForHome = [];
-
-for (let i = 0; i < window.masterProducts.length; i++) {
-    const cat = window.masterProducts[i].cat || 'Other';
-    if (!categoryCount[cat]) categoryCount[cat] = 0;
-
-    if (categoryCount[cat] < 2) {
-        filteredForHome.push(window.masterProducts[i]);
-        categoryCount[cat]++;
-    }
-}
-
-// 4. اب allProducts کو Home والے سے Replace کرو
-allProducts.length = 0;
-allProducts.push(...filteredForHome);
-
-// 5. Category Click Function - Global بناؤ
-window.showCategoryAll = function(categoryName) {
-    const filtered = window.masterProducts.filter(p => p.cat === categoryName);
-    allProducts.length = 0;
-    allProducts.push(...filtered);
-    // اب تمہارا render function دوبارہ چلاؤ
-    // اگر render کا نام pata hai to yahan likh do
-    location.reload(); // فی الحال Reload کر دے گا
-}
-
 // DREAMS SHOP FIX END
 
 
@@ -1430,97 +1397,81 @@ window.showCategoryAll = function(categoryName) {
 
                 // Render Grid Logic
                 function render(category = 'All', search = '') {
-                    grid.innerHTML = '';
-                    const term = search.toLowerCase();
+    grid.innerHTML = '';
+    const term = search.toLowerCase();
 
-                    const filtered = allProducts.filter(p => {
-                        const matchCat = category === 'All' || p.cat === category;
-                        const matchSearch = p.title.toLowerCase().includes(term) || p.cat.toLowerCase().includes(term);
-                        return matchCat && matchSearch;
-                    });
+    // 1. Master Products سے شروع کرو - 1200 والے
+    let productsToRender = [...window.masterProducts];
 
-                    if (filtered.length === 0) {
-                        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
-                        return;
-                    }
+    // 2. Category Filter
+    if (category!== 'All') {
+        productsToRender = productsToRender.filter(p => p.cat === category);
+    }
 
-                    filtered.forEach(p => {
-                        let icon = 'fa-gift';
-                        let cardClass = 'card';
-                        const lowerCat = p.cat.toLowerCase();
+    // 3. Search Filter
+    if (term) {
+        productsToRender = productsToRender.filter(p =>
+            (p.name || p.title || '').toLowerCase().includes(term)
+        );
+    }
 
-                        // Icon Logic
-                        if(lowerCat.includes('christmas')) {
-                            icon = 'fa-snowflake';
-                            cardClass += ' christmas';
-                        } else if (lowerCat.includes('bikini') || lowerCat.includes('swim') || lowerCat.includes('piece') || lowerCat.includes('monokini') || lowerCat.includes('slingshot') || lowerCat.includes('rash') || lowerCat.includes('cover')) {
-                            icon = 'fa-person-swimming';
-                            cardClass += ' swim';
-                        } else if (lowerCat.includes('activewear') || lowerCat.includes('yoga') || lowerCat.includes('workout') || lowerCat.includes('bodysuit') || lowerCat.includes('shorts')) {
-                            icon = 'fa-person-running';
-                            cardClass += ' activewear';
-                        } else if (lowerCat.includes('toy') || lowerCat.includes('doll') || lowerCat.includes('vibrator') || lowerCat.includes('novelty') || lowerCat.includes('masturbator')) {
-                            icon = 'fa-fire';
-                            cardClass += ' toy';
-                        } else if (lowerCat.includes('lingerie') || lowerCat.includes('underwear') || lowerCat.includes('sleepwear') || lowerCat.includes('loungewear') || lowerCat.includes('nightgown') || lowerCat.includes('nightwear')) {
-                            icon = 'fa-heart';
-                        } else if (lowerCat.includes('cosplay')) {
-                            icon = 'fa-mask';
-                        } else if (lowerCat.includes('stuffed') || lowerCat.includes('bear')) {
-                            icon = 'fa-paw';
-                        } else if (lowerCat.includes('laptop') || lowerCat.includes('computer')) {
-                            icon = 'fa-laptop';
-                            cardClass += ' tech';
-                        } else if (lowerCat.includes('tablet')) {
-                            icon = 'fa-tablet-screen-button';
-                            cardClass += ' tech';
-                        } else if (lowerCat.includes('wellness')) {
-                            icon = 'fa-heart-pulse';
-                            cardClass += ' wellness';
-                        } else if (lowerCat.includes('kitchen') || lowerCat.includes('cook')) {
-                            icon = 'fa-utensils';
-                            cardClass += ' kitchen';
-                        } else if (lowerCat.includes('home') || lowerCat.includes('decor')) {
-                            icon = 'fa-house';
-                        } else if (lowerCat.includes('tattoo')) {
-                            icon = 'fa-dragon';
-                        } else if (lowerCat.includes('book')) {
-                            icon = 'fa-book';
-                            cardClass += ' book';
-                        } else if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
-                            icon = 'fa-shirt';
-                        }
+    // 4. Main Page پر ہر Category سے صرف 2
+    if (category === 'All' &&!term) {
+        const categoryCount = {};
+        const limitedProducts = [];
 
-                        // Logic for Image vs Icon
-                        let visualContent = '';
-                        if(p.image && p.image.trim() !== "") {
-                             visualContent = `<img src="${p.image}" alt="${p.title}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fa-solid ${icon}\\'></i>';">`;
-                        } else {
-                             visualContent = `<i class="fa-solid ${icon}"></i>`;
-                        }
+        for (let i = 0; i < productsToRender.length; i++) {
+            const cat = productsToRender[i].cat || 'Other';
+            if (!categoryCount[cat]) categoryCount[cat] = 0;
 
-                        // Price Logic: Show if price exists (not empty string)
-                        const priceDisplay = (p.price === "") ? '' : `<div class="price">${p.price}</div>`;
-                        
-                        // Handle missing links gracefully (don't break, just # if empty)
-                        const linkUrl = (p.link && p.link.trim() !== "") ? p.link : "#";
-                        const targetAttr = (linkUrl === "#") ? "" : `target="_blank"`;
+            if (categoryCount[cat] < 2) {
+                limitedProducts.push(productsToRender[i]);
+                categoryCount[cat]++;
+            }
+        }
+        productsToRender = limitedProducts;
+    }
 
-                        const html = `
-                        <div class="${cardClass}">
-                            <a href="${linkUrl}" ${targetAttr} class="img-box" title="View on Amazon">
-                                ${visualContent}
-                            </a>
-                            <div class="info">
-                                <div class="cat">${p.cat}</div>
-                                ${priceDisplay}
-                                <div class="title">${p.title}</div>
-                                <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
-                            </div>
-                        </div>`;
-                        grid.innerHTML += html;
-                    });
-                }
+    // 5. No Products Found
+    if (productsToRender.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
+        return;
+    }
+
+    // 6. Render - تمہارا پرانا Card والا Code
+    productsToRender.forEach(p => {
+        let icon = 'fa-box';
+        let lowerCat = (p.cat || '').toLowerCase();
+        if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
+            icon = 'fa-shirt';
+        } else if (lowerCat.includes('book')) {
+            icon = 'book';
+        }
+
+        let visualContent = '';
+        if(p.image && p.image.trim()!== "") {
+            visualContent = `<img src="${p.image}" alt="${p.title}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fa-solid ${icon}\\'></i>';">`;
+        } else {
+            visualContent = `<i class="fa-solid ${icon}"></i>`;
+        }
+
+        const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
+        const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
+        const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
+
+        let html = `
+            <div class="product-card">
+                <div class="product-image">${visualContent}</div>
+                <div class="product-info">
+                    <h3>${p.title || p.name}</h3>
+                    ${priceDisplay}
+                    <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+        `;
+        grid.innerHTML += html;
+    });
+}
 
                 // Initialize
                 loadingMsg.style.display = 'none';
