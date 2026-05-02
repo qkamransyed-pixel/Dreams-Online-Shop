@@ -1359,22 +1359,32 @@
                     return { ...p, cat: c };
         
                 });
-// DREAMS SHOP FIX - 1200 PRODUCTS - CONST ERROR FIX
+// DREAMS SHOP FIX - CATEGORY ISSUE SOLVED
 
-// 1. صرف 24 Products لو - نیا variable بنا لو
-const productsToShow = allProducts.slice(0, 24);
+// 1. ہر Category سے 4 Products لو تاکہ سب دکھیں
+const categoryMap = {};
+const productsToShow = [];
 
-// 2. Images 10x چھوٹی کر دو
-for (let i = 0; i < productsToShow.length; i++) {
-    if(productsToShow[i].image) {
-        productsToShow[i].image = productsToShow[i].image.replace('_SL1000_', '_SL300_');
-        productsToShow[i].image = productsToShow[i].image.replace('_SL1500_', '_SL300_');
+for (let i = 0; i < allProducts.length; i++) {
+    const cat = allProducts[i].cat || 'Other';
+    if (!categoryMap[cat]) categoryMap[cat] = 0;
+
+    if (categoryMap[cat] < 4) { // ہر category سے صرف 4
+        // Image چھوٹی کرو
+        if(allProducts[i].image) {
+            allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
+            allProducts[i].image = allProducts[i].image.replace('_SL1500_', '_SL300_');
+        }
+        productsToShow.push(allProducts[i]);
+        categoryMap[cat]++;
     }
+
+    if (productsToShow.length >= 40) break; // Max 40 products ٹوٹل
 }
 
-// 3. اب allProducts کو update کر دو
-allProducts.length = 0; // پرانا خالی کرو
-allProducts.push(...productsToShow); // نئے 24 ڈال دو
+// 2. allProducts کو update کر دو
+allProducts.length = 0;
+allProducts.push(...productsToShow);
 
 // DREAMS SHOP FIX END
 
