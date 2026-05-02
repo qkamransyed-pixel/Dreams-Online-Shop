@@ -1359,19 +1359,23 @@
                     return { ...p, cat: c };
         
                 });
-// DREAMS SHOP FIX - 1200 PRODUCTS
-// اس کو لائن 1376 کے بعد لگاؤ، یعنی }); کے بعد
+// DREAMS SHOP FIX - 1200 PRODUCTS - CONST ERROR FIX
 
-// 1. صرف 24 Products لو - سائٹ Hang نہیں ہوگی
-allProducts = allProducts.slice(0, 24);
+// 1. صرف 24 Products لو - نیا variable بنا لو
+const productsToShow = allProducts.slice(0, 24);
 
 // 2. Images 10x چھوٹی کر دو
-for (let i = 0; i < allProducts.length; i++) {
-    if(allProducts[i].image) {
-        allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
-        allProducts[i].image = allProducts[i].image.replace('_SL1500_', '_SL300_');
+for (let i = 0; i < productsToShow.length; i++) {
+    if(productsToShow[i].image) {
+        productsToShow[i].image = productsToShow[i].image.replace('_SL1000_', '_SL300_');
+        productsToShow[i].image = productsToShow[i].image.replace('_SL1500_', '_SL300_');
     }
 }
+
+// 3. اب allProducts کو update کر دو
+allProducts.length = 0; // پرانا خالی کرو
+allProducts.push(...productsToShow); // نئے 24 ڈال دو
+
 // DREAMS SHOP FIX END
 
                 const grid = document.getElementById('grid');
