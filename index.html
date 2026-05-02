@@ -1394,6 +1394,7 @@
 
     // 1. Master Products سے شروع کرو - 1200 والے
     let productsToRender = [...window.masterProducts];
+       productsToRender = productsToRender.filter(p => p.image && p.image.trim() !== '');             
 
     // 2. Category Filter
     if (category!== 'All') {
