@@ -1406,22 +1406,24 @@
             (p.name || p.title || '').toLowerCase().includes(term)
         );
     }
-// 4. Main Page per Category 2 sirf
-if (category === 'All' && term) {
-    const categoryCount = {};
-    const limitedProducts = [];
 
-    for (let i = 0; i < productsToRender.length; i++) {
-        const cat = productsToRender[i].cat || 'Other';
-        if (!categoryCount[cat]) categoryCount[cat] = 0;
+    // 4. Main Page پر ہر Category سے صرف 2
+    if (category === 'All' &&!term) {
+        const categoryCount = {};
+        const limitedProducts = [];
 
-        if (categoryCount[cat] < 2) {
-            limitedProducts.push(productsToRender[i]);
-            categoryCount[cat]++;
+        for (let i = 0; i < productsToRender.length; i++) {
+            const cat = productsToRender[i].cat || 'Other';
+            if (!categoryCount[cat]) categoryCount[cat] = 0;
+
+            if (categoryCount[cat] < 2) {
+                limitedProducts.push(productsToRender[i]);
+                categoryCount[cat]++;
+            }
         }
+        productsToRender = limitedProducts;
     }
-    productsToRender = limitedProducts;
-}
+
     // 5. No Products Found
     if (productsToRender.length === 0) {
         grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
