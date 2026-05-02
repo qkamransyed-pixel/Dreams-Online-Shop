@@ -1359,35 +1359,35 @@
                     return { ...p, cat: c };
         
                 });
-// DREAMS SHOP FIX - CATEGORY ISSUE SOLVED
 
-// 1. ہر Category سے 4 Products لو تاکہ سب دکھیں
-const categoryMap = {};
-const productsToShow = [];
+// DREAMS SHOP FIX - 1200 PRODUCTS + ALL CATEGORIES
+
+// 1. Images سب کی چھوٹی کر دو - سائٹ تیز ہو جائے گی
+for (let i = 0; i < allProducts.length; i++) {
+    if(allProducts[i].image) {
+        allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
+        allProducts[i].image = allProducts[i].image.replace('_SL1500_', '_SL300_');
+    }
+}
+
+// 2. Main page کے لیے ہر Category سے صرف 2 Products نکالو
+const categoryCount = {};
+const homePageProducts = [];
 
 for (let i = 0; i < allProducts.length; i++) {
     const cat = allProducts[i].cat || 'Other';
-    if (!categoryMap[cat]) categoryMap[cat] = 0;
+    if (!categoryCount[cat]) categoryCount[cat] = 0;
 
-    if (categoryMap[cat] < 4) { // ہر category سے صرف 4
-        // Image چھوٹی کرو
-        if(allProducts[i].image) {
-            allProducts[i].image = allProducts[i].image.replace('_SL1000_', '_SL300_');
-            allProducts[i].image = allProducts[i].image.replace('_SL1500_', '_SL300_');
-        }
-        productsToShow.push(allProducts[i]);
-        categoryMap[cat]++;
+    if (categoryCount[cat] < 2) { // ہر category سے صرف 2
+        homePageProducts.push(allProducts[i]);
+        categoryCount[cat]++;
     }
-
-    if (productsToShow.length >= 40) break; // Max 40 products ٹوٹل
 }
 
-// 2. allProducts کو update کر دو
-allProducts.length = 0;
-allProducts.push(...productsToShow);
+// 3. اب render کے لیے homePageProducts استعمال کرو
+const displayProducts = homePageProducts;
 
 // DREAMS SHOP FIX END
-
                 const grid = document.getElementById('grid');
                 const searchInput = document.getElementById('search');
                 const filterContainer = document.getElementById('filters');
