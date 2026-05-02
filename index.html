@@ -1407,22 +1407,22 @@
         );
     }
 
-    // 4. Main Page پر ہر Category سے صرف 2
-    if (category === 'All' &&!term) {
-        const categoryCount = {};
-        const limitedProducts = [];
+    // 4. Main Page per Category 2 sirf
+if (category === 'All' &&!term) {
+    const categoryCount = {};
+    const limitedProducts = [];
 
-        for (let i = 0; i < productsToRender.length; i++) {
-            const cat = productsToRender[i].cat || 'Other';
-            if (!categoryCount[cat]) categoryCount[cat] = 0;
+    for (let i = 0; i < productsToRender.length; i++) {
+        const cat = productsToRender[i].cat || 'Other';
+        if (!categoryCount[cat]) categoryCount[cat] = 0;
 
-            if (categoryCount[cat] < 2) {
-                limitedProducts.push(productsToRender[i]);
-                categoryCount[cat]++;
-            }
+        if (categoryCount[cat] < 20) { // yahan 2 se 20 kar diya
+            limitedProducts.push(productsToRender[i]);
+            categoryCount[cat]++;
         }
-        productsToRender = limitedProducts;
     }
+    productsToRender = limitedProducts;
+}
 
     // 5. No Products Found
     if (productsToRender.length === 0) {
