@@ -133,80 +133,7 @@
         
         footer { text-align: center; margin-top: 80px; padding: 30px; border-top: 1px solid #222; color: #666; font-size: 0.9rem; }
     </style>
-    <style>
-/* Uper wale category buttons hide karo */
-.category-buttons-container {
-    display: none!important;
-}
-
-/* Main content ko right shift karo */
-.main-content-wrapper {
-    margin-left: 240px!important;
-}
-
-/* Amazon Style Sidebar */
-#amazonSidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 230px;
-    height: 100vh;
-    background: #131A22;
-    overflow-y: auto;
-    padding-top: 20px;
-    z-index: 99;
-    border-right: 1px solid #333;
-}
-
-#amazonSidebar h3 {
-    color: #fff;
-    font-size: 18px;
-    padding: 0 15px 15px;
-    margin: 0;
-    border-bottom: 1px solid #333;
-}
-
-.amazon-cat-item {
-    display: block;
-    width: 100%;
-    padding: 8px 15px;
-    color: #ddd;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.amazon-cat-item:hover {
-    background: #232F3E;
-    color: #fff;
-}
-
-.amazon-cat-item.active {
-    background: #FF9900;
-    color: #000;
-    font-weight: bold;
-}
-
-.cat-count {
-    float: right;
-    color: #999;
-    font-size: 12px;
-}
-
-.amazon-cat-item.active.cat-count {
-    color: #000;
-}
-
-/* Mobile par sidebar hide */
-@media (max-width: 768px) {
-    #amazonSidebar { display: none; }
-   .main-content-wrapper { margin-left: 0!important; }
-   .category-buttons-container { display: block!important; }
-}
-</style>
+ 
 </head>
 <body>
 
@@ -1668,44 +1595,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3>Shop by Category</h3>
     <div id="amazonCatList"></div>
 </div>
-
-<script>
-// Wait karo jab tak uper wale buttons load na ho jayen
-setTimeout(() => {
-    const topCats = document.querySelectorAll('.category-buttons-container button');
-    const sidebarList = document.getElementById('amazonCatList');
-    const mainContent = document.querySelector('.products-grid')?.parentElement;
-
-    // Main content ko wrapper do taake shift ho jaye
-    if(mainContent &&!mainContent.classList.contains('main-content-wrapper')) {
-        mainContent.classList.add('main-content-wrapper');
-    }
-
-    let html = '';
-    topCats.forEach(btn => {
-        const fullText = btn.textContent.trim();
-        const catName = fullText.split('(')[0].trim();
-        const count = fullText.match(/\((\d+)\)/)?.[1] || '';
-        const onclick = btn.getAttribute('onclick');
-
-        if(catName && catName!== 'All') {
-            html += `<button class="amazon-cat-item" onclick="${onclick}; document.querySelectorAll('.amazon-cat-item').forEach(b=>b.classList.remove('active')); this.classList.add('active');">
-                        ${catName} <span class="cat-count">${count}</span>
-                     </button>`;
-        }
-    });
-
-    // "All" button sabse uper add karo
-    const allBtn = document.querySelector('.category-buttons-container button');
-    if(allBtn) {
-        html = `<button class="amazon-cat-item active" onclick="${allBtn.getAttribute('onclick')}; document.querySelectorAll('.amazon-cat-item').forEach(b=>b.classList.remove('active')); this.classList.add('active');">
-                    All Products
-                 </button>` + html;
-    }
-
-    sidebarList.innerHTML = html;
-}, 1500);
-</script>
 
 </body>
 </html>
