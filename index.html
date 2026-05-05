@@ -1558,22 +1558,7 @@ button:has(:contains("Adult Toys")),
 }
 </style>
 
-<script>
-// JS والا بیک اپ - اگر AJAX سے لوڈ ہوں تو
-document.addEventListener('DOMContentLoaded', function() {
-    setInterval(function() {
-        // بٹن ہٹاؤ
-        document.querySelectorAll('button, li, a').forEach(el => {
-            if(el.textContent.includes('Adult Toys')) {
-                el.remove();
-            }
-        });
-        // پروڈکٹس ہٹاؤ
-        document.querySelectorAll('.card.toy').forEach(el => {
-            el.remove();
-        });
-    }, 1000);
-});
+
 </script>
 </body>
 </html>
