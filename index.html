@@ -144,42 +144,82 @@
     </style>
 <style>
 @media(min-width:768px){
-  /* Poore page ko flex banao */
+  /* 1. Header ko center karo */
+  body > div:first-child,
+  .header, header{
+    width:100% !important;
+    text-align:center !important;
+    display:block !important;
+  }
+
+  /* 2. Main layout flex karo */
   body{
     display:flex !important;
+    flex-wrap:wrap;
     align-items:flex-start;
     gap:25px;
     padding:20px;
   }
 
-  /* Left sidebar - Categories */
+  /* 3. Left sidebar - categories */
   .controls{
-    width:240px;
-    flex-shrink:0;
-    position:sticky;
-    top:20px;
-    max-height:90vh;
-    overflow-y:auto;
+    width:220px !important;
+    flex-shrink:0 !important;
+    position:sticky !important;
+    top:20px !important;
+    max-height:90vh !important;
+    overflow-y:auto !important;
   }
 
-  /* Categories ko uper neeche karo */
+  /* Search box ko sidebar ke size ka karo */
+  #search{
+    width:100% !important;
+    box-sizing:border-box !important;
+    margin-bottom:10px !important;
+  }
+
+  /* Categories vertical */
   .filter-container{
     display:block !important;
-    flex-direction:column !important;
   }
-
   .filter-btn{
     display:block !important;
     width:100% !important;
-    margin:6px 0 !important;
+    margin:5px 0 !important;
     text-align:left !important;
     justify-content:flex-start !important;
   }
 
-  /* Products wala div right side shift */
+  /* 4. Products grid - 3 columns */
   .controls + *{
-    flex:1;
-    min-width:0;
+    flex:1 !important;
+    min-width:0 !important;
+  }
+  .controls + * .products,
+  .controls + * .product-grid,
+  .controls + * [class*="product"]{
+    display:grid !important;
+    grid-template-columns:repeat(3, 1fr) !important;
+    gap:20px !important;
+  }
+
+  /* 5. Footer ko neeche bhejo */
+  footer, .footer, body > div:last-child{
+    width:100% !important;
+    order:9999 !important;
+    margin-top:40px !important;
+    text-align:center !important;
+  }
+}
+
+/* Mobile pe sab normal */
+@media(max-width:767px){
+  .controls, .controls + *{
+    width:100% !important;
+  }
+  .filter-container{
+    display:flex !important;
+    flex-wrap:wrap !important;
   }
 }
 </style>
