@@ -144,21 +144,37 @@
     </style>
 <style>
 @media(min-width:768px){
-/* Left sidebar for categories */
-body > div:nth-child(3), .category-wrap, .filters-wrap, [class*="category"]{
-float:left;width:230px;position:sticky;top:20px;max-height:90vh;overflow-y:auto;padding:10px 5px;
-}
-/* Make categories vertical */
-body > div:nth-child(3) a, .category-wrap a, .filters-wrap a, [class*="category"] a,
-body > div:nth-child(3) button, .category-wrap button, .filters-wrap button, [class*="category"] button{
-display:block !important;width:100% !important;margin:5px 0 !important;text-align:left !important;
-}
-/* Shift products to right */
-.products-wrap, .product-grid, .product-container, [class*="product"]{
-margin-left:250px;
-}
-/* Clear float */
-body::after{content:"";display:block;clear:both;}
+  /* Main wrapper ko flex banao */
+  body > div:nth-of-type(2) {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  /* Categories left sidebar */
+  body > div:nth-of-type(2) > div:first-child {
+    position: sticky;
+    top: 20px;
+    width: 220px;
+    flex-shrink: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Categories vertical karo */
+  body > div:nth-of-type(2) > div:first-child a,
+  body > div:nth-of-type(2) > div:first-child button {
+    display: block !important;
+    width: 100% !important;
+    margin: 6px 0 !important;
+    text-align: left !important;
+  }
+
+  /* Products area */
+  body > div:nth-of-type(2) > div:last-child {
+    flex: 1;
+    min-width: 0;
+  }
 }
 </style>
     
