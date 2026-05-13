@@ -144,24 +144,21 @@
     </style>
 <style>
 @media(min-width:768px){
-  /* 1. Header ko center karo */
-  body > div:first-child,
-  .header, header{
+  /* Header center */
+  body > div:first-child, header{
     width:100% !important;
     text-align:center !important;
-    display:block !important;
   }
 
-  /* 2. Main layout flex karo */
+  /* Main layout */
   body{
     display:flex !important;
-    flex-wrap:wrap;
     align-items:flex-start;
     gap:25px;
     padding:20px;
   }
 
-  /* 3. Left sidebar - categories */
+  /* Left sidebar - categories */
   .controls{
     width:220px !important;
     flex-shrink:0 !important;
@@ -171,14 +168,12 @@
     overflow-y:auto !important;
   }
 
-  /* Search box ko sidebar ke size ka karo */
   #search{
     width:100% !important;
     box-sizing:border-box !important;
-    margin-bottom:10px !important;
+    margin-bottom:12px !important;
   }
 
-  /* Categories vertical */
   .filter-container{
     display:block !important;
   }
@@ -187,39 +182,35 @@
     width:100% !important;
     margin:5px 0 !important;
     text-align:left !important;
-    justify-content:flex-start !important;
   }
 
-  /* 4. Products grid - 3 columns */
+  /* Products area - sirf grid banaya hai, andar nahi chheda */
   .controls + *{
     flex:1 !important;
     min-width:0 !important;
   }
-  .controls + * .products,
-  .controls + * .product-grid,
-  .controls + * [class*="product"]{
+  
+  .controls + * > div,
+  .controls + * > section,
+  .controls + * > ul{
     display:grid !important;
     grid-template-columns:repeat(3, 1fr) !important;
     gap:20px !important;
   }
 
-  /* 5. Footer ko neeche bhejo */
-  footer, .footer, body > div:last-child{
+  /* Product card ke andar kuch touch nahi kiya */
+  .controls + * img{
+    width:100% !important;
+    height:auto !important;
+    display:block !important;
+  }
+
+  /* Footer neeche */
+  footer, body > div:last-child{
     width:100% !important;
     order:9999 !important;
     margin-top:40px !important;
     text-align:center !important;
-  }
-}
-
-/* Mobile pe sab normal */
-@media(max-width:767px){
-  .controls, .controls + *{
-    width:100% !important;
-  }
-  .filter-container{
-    display:flex !important;
-    flex-wrap:wrap !important;
   }
 }
 </style>
