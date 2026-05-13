@@ -144,36 +144,32 @@
     </style>
 <style>
 @media(min-width:768px){
-  /* Main wrapper ko flex banao */
-  body > div:nth-of-type(2) {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
+  body > div:nth-child(4){
+    display:flex !important;
+    align-items:flex-start;
+    gap:20px;
   }
-
-  /* Categories left sidebar */
-  body > div:nth-of-type(2) > div:first-child {
-    position: sticky;
-    top: 20px;
-    width: 220px;
-    flex-shrink: 0;
-    max-height: 90vh;
-    overflow-y: auto;
+  body > div:nth-child(4) > div:nth-child(1){
+    width:220px;
+    flex-shrink:0;
+    position:sticky;
+    top:20px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding-right:10px;
   }
-
-  /* Categories vertical karo */
-  body > div:nth-of-type(2) > div:first-child a,
-  body > div:nth-of-type(2) > div:first-child button {
-    display: block !important;
-    width: 100% !important;
-    margin: 6px 0 !important;
-    text-align: left !important;
+  body > div:nth-child(4) > div:nth-child(1) a{
+    display:block !important;
+    width:100% !important;
+    margin:5px 0 !important;
+    text-align:left !important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
-
-  /* Products area */
-  body > div:nth-of-type(2) > div:last-child {
-    flex: 1;
-    min-width: 0;
+  body > div:nth-child(4) > div:nth-child(2){
+    flex:1;
+    min-width:0;
   }
 }
 </style>
