@@ -144,15 +144,21 @@
     </style>
 <style>
 @media(min-width:768px){
-.shop-filters,.woocommerce-widget-layered-nav,.product-categories{
-float:left;width:240px;position:sticky;top:20px;max-height:90vh;overflow-y:auto;padding:10px;
+/* Left sidebar for categories */
+body > div:nth-child(3), .category-wrap, .filters-wrap, [class*="category"]{
+float:left;width:230px;position:sticky;top:20px;max-height:90vh;overflow-y:auto;padding:10px 5px;
 }
-.shop-products,.products,.woocommerce-loop-product__wrapper{
-margin-left:260px;
+/* Make categories vertical */
+body > div:nth-child(3) a, .category-wrap a, .filters-wrap a, [class*="category"] a,
+body > div:nth-child(3) button, .category-wrap button, .filters-wrap button, [class*="category"] button{
+display:block !important;width:100% !important;margin:5px 0 !important;text-align:left !important;
 }
-.shop-filters ul,.product-categories li{
-display:block;float:none;width:100%;margin:4px 0;
+/* Shift products to right */
+.products-wrap, .product-grid, .product-container, [class*="product"]{
+margin-left:250px;
 }
+/* Clear float */
+body::after{content:"";display:block;clear:both;}
 }
 </style>
     
