@@ -2026,17 +2026,17 @@ if (category!== 'All' &&!term) {
         const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
 
         let html = `
-            <div class="product-card">
-                <div class="product-image">${visualContent}</div>
-                <div class="product-info">
-                    <h3>${p.title || p.name}</h3>
-                    ${priceDisplay}
-                    <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-        `;
-        grid.innerHTML += html;
-    });
+  <div class="product-card">
+    <div class="product-image">${visualContent}</div>
+    <div class="product-info">
+      <h3>${p.title || p.name}</h3>
+      ${priceDisplay}
+      <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
+    </div>
+  </div>
+`;
+grid.innerHTML += html;
+});
 }
 
 function init() {
