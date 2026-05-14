@@ -2038,7 +2038,7 @@ if (category!== 'All' &&!term) {
         grid.innerHTML += html;
     });
 }
-
+document.addEventListener('DOMContentLoaded', () => {
                 // Initialize
                 loadingMsg.style.display = 'none';
                 createFilters();
@@ -2054,6 +2054,7 @@ searchInput.addEventListener('input', (e) => {
         render(currentCat, e.target.value);
     }, 300);
 });
+    });
                 
         </script>
 
