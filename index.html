@@ -2026,36 +2026,38 @@ if (category!== 'All' &&!term) {
         const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
 
         let html = `
-  <div class="product-card">
-    <div class="product-image">${visualContent}</div>
-    <div class="product-info">
-      <h3>${p.title || p.name}</h3>
-      ${priceDisplay}
-      <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
-    </div>
-  </div>
-`;
-grid.innerHTML += html;
-});
+          <div class="product-card">
+            <div class="product-image">${visualContent}</div>
+            <div class="product-info">
+              <h3>${p.title || p.name}</h3>
+              ${priceDisplay}
+              <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
+            </div>
+          </div>
+        `;
+        if (typeof grid !== 'undefined') grid.innerHTML += html;
+    });
 }
 
 function init() {
     // Initialize
-    loadingMsg.style.display = 'none';
-    createFilters();
+    if (typeof loadingMsg !== 'undefined') loadingMsg.style.display = 'none';
+    if (typeof createFilters === 'function') createFilters();
     render();
     
     // Search Event
     let searchTimeout;
-    searchInput.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            const activeBtn = document.querySelector('.filter-btn.active');
-            let currentCat = 'All';
-            if(activeBtn) currentCat = activeBtn.textContent.trim();
-            render(currentCat, e.target.value);
-        }, 300);
-    });
+    if (typeof searchInput !== 'undefined') {
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const activeBtn = document.querySelector('.filter-btn.active');
+                let currentCat = 'All';
+                if(activeBtn) currentCat = activeBtn.textContent.trim();
+                render(currentCat, e.target.value);
+            }, 300);
+        });
+    }
 }
 
 if (document.readyState === 'loading') {
