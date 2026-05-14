@@ -1995,19 +1995,10 @@
 
     if (category === 'All' &&!term) {
     productsToRender = productsToRender.slice(0, 200);
-}
-if (term) {
+
+        if (term) {
     productsToRender = productsToRender.slice(0, 50);
 }
-if (category!== 'All' &&!term) {
-    productsToRender = productsToRender.slice(0, 200);
-}
-
-    // 5. No Products Found
-    if (productsToRender.length === 0) {
-        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
-        return;
-    }
 
     // 6. Render - تمہارا پرانا Card والا Code
     productsToRender.forEach(p => {
