@@ -2037,21 +2037,18 @@ if (category === 'All' && !term) {
                 loadingMsg.style.display = 'none';
                 createFilters();
                 render();
-
-                // Search Event
-searchInput.addEventListener('input', (e) => {
-  console.log('Searching:', e.target.value);
-  render('All', e.target.value);
-  
-  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector('.filter-btn[data-category="All"]')?.classList.add('active');
-});
-
-            } catch (error) {
-                document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
-                console.error(error);
-            }
-        });
+// Search Event
+const searchInput = document.getElementById('search');
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    console.log('Searching:', e.target.value);
+    render('All', e.target.value);
+    
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.filter-btn[data-category="All"]')?.classList.add('active');
+  });
+}
+                
         </script>
 
 
