@@ -2043,6 +2043,7 @@ if (category === 'All' && !term) {
                     const activeBtn = document.querySelector('.filter-btn.active');
                     let currentCat = 'All';
                     if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+                    console.log('Searching:', e.target.value);
                     render(currentCat, e.target.value);
                 });
 
