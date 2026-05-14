@@ -1992,8 +1992,13 @@
   });
 }
 
-    // Limit for Main Page - 200 Products Only
-if (category === 'All' && !term) {
+    if (category === 'All' &&!term) {
+    productsToRender = productsToRender.slice(0, 200);
+}
+if (term) {
+    productsToRender = productsToRender.slice(0, 50);
+}
+if (category!== 'All' &&!term) {
     productsToRender = productsToRender.slice(0, 200);
 }
 
