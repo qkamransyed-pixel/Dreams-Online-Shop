@@ -1969,6 +1969,9 @@
     const term = search.toLowerCase();
 
     // 1. Master Products سے شروع کرو - 1200 والے
+       if (term && term.trim() !== '') {
+    category = 'All'; // Search hote hi All pe switch ho jao
+       }             
     let productsToRender = [...window.masterProducts];
        
     // 2. Category Filter
@@ -2043,28 +2046,13 @@ if (category!== 'All' &&!term) {
                 createFilters();
                 render();
                 // Search Event
-let searchTimeout;
 searchInput.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
-        const term = e.target.value.trim();
-
-        if (term !== '') {
-            // All button ko active banao
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.trim() === 'All') {
-                    btn.classList.add('active');
-                }
-            });
-            render('All', term);
-        } else {
-            // Search khali hai to purani category pe wapas jao
-            const activeBtn = document.querySelector('.filter-btn.active');
-            let currentCat = 'All';
-            if(activeBtn) currentCat = activeBtn.textContent.trim();
-            render(currentCat, '');
-        }
+        const activeBtn = document.querySelector('.filter-btn.active');
+        let currentCat = 'All';
+        if(activeBtn) currentCat = activeBtn.textContent.trim();
+        render(currentCat, e.target.value);
     }, 300);
 });
                 
