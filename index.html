@@ -2054,17 +2054,32 @@ if (category === 'All' && !term) {
         </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('search').addEventListener('input', function(e) {
+  let searchBox = document.getElementById('search');
+  if(!searchBox) return;
+  
+  searchBox.addEventListener('input', function(e) {
     let term = e.target.value.toLowerCase().trim();
-    let cards = document.querySelectorAll('.product-card, .product, .item');
+    let container = document.getElementById('products-grid') || document.querySelector('.products-grid');
+    if(!container) return;
     
-    cards.forEach(card => {
-      card.style.display = card.textContent.toLowerCase().includes(term) ? '' : 'none';
-    });
+    let cards = container.children;
     
-    let visible = document.querySelectorAll('.product-card:not([style*="display: none"]), .product:not([style*="display: none"]), .item:not([style*="display: none"])').length;
+    for(let i = 0; i < cards.length; i++) {
+      let card = cards[i];
+      if(term === '' || card.textContent.toLowerCase().includes(term)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+    
+    let visible = 0;
+    for(let i = 0; i < cards.length; i++) {
+      if(cards[i].style.display!== 'none') visible++;
+    }
+    
     let noResult = document.getElementById('no-result');
-    if(noResult) noResult.style.display = visible === 0 ? 'block' : 'none';
+    if(noResult) noResult.style.display = (visible === 0 && term!== '')? 'block' : 'none';
   });
 });
 </script>
