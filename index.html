@@ -2057,30 +2057,33 @@ document.addEventListener('DOMContentLoaded', function() {
   let searchBox = document.getElementById('search');
   if(!searchBox) return;
   
-  searchBox.addEventListener('input', function(e) {
-    let term = e.target.value.toLowerCase().trim();
-    let container = document.getElementById('products-grid') || document.querySelector('.products-grid');
+  function filterProducts() {
+    let term = searchBox.value.toLowerCase().trim();
+    let container = document.getElementById('products-grid') || document.querySelector('.products-grid,.product-grid,.grid, #product-list');
     if(!container) return;
     
     let cards = container.children;
+    let visible = 0;
     
     for(let i = 0; i < cards.length; i++) {
       let card = cards[i];
       if(term === '' || card.textContent.toLowerCase().includes(term)) {
         card.style.display = '';
+        visible++;
       } else {
         card.style.display = 'none';
       }
     }
     
-    let visible = 0;
-    for(let i = 0; i < cards.length; i++) {
-      if(cards[i].style.display!== 'none') visible++;
-    }
-    
     let noResult = document.getElementById('no-result');
     if(noResult) noResult.style.display = (visible === 0 && term!== '')? 'block' : 'none';
-  });
+  }
+  
+  searchBox.addEventListener('input', filterProducts);
+  
+  // Agar products baad me load hote hain to ye unko pakad lega
+  const observer = new MutationObserver(filterProducts);
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 </script>
     
