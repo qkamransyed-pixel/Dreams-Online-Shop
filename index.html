@@ -1978,10 +1978,10 @@
 
     // 3. Search Filter
     if (term) {
-        productsToRender = productsToRender.filter(p =>
-            (p.name || p.title || '').toLowerCase().includes(term)
-        );
-    }
+  productsToRender = productsToRender.filter(p => 
+    (p.name || p.title || p.desc || p.description || JSON.stringify(p)).toLowerCase().includes(term)
+  );
+}
 
     // Limit for Main Page - 200 Products Only
 if (category === 'All' && !term) {
