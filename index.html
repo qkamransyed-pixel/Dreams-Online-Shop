@@ -1969,9 +1969,7 @@
     const term = search.toLowerCase();
 
     // 1. Master Products سے شروع کرو - 1200 والے
-       if (term && term.trim() !== '') {
-    category = 'All'; // Search hote hi All pe switch ho jao
-       }             
+        
     let productsToRender = [...window.masterProducts];
        
     // 2. Category Filter
@@ -2046,6 +2044,7 @@ if (category!== 'All' &&!term) {
                 createFilters();
                 render();
                 // Search Event
+let searchTimeout;
 searchInput.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
