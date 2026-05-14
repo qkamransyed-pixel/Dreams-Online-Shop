@@ -2038,24 +2038,31 @@ if (category!== 'All' &&!term) {
         grid.innerHTML += html;
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
-                // Initialize
-                loadingMsg.style.display = 'none';
-                createFilters();
-                render();
-                // Search Event
-let searchTimeout;
-searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-        const activeBtn = document.querySelector('.filter-btn.active');
-        let currentCat = 'All';
-        if(activeBtn) currentCat = activeBtn.textContent.trim();
-        render(currentCat, e.target.value);
-    }, 300);
-});
+
+function init() {
+    // Initialize
+    loadingMsg.style.display = 'none';
+    createFilters();
+    render();
+    
+    // Search Event
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const activeBtn = document.querySelector('.filter-btn.active');
+            let currentCat = 'All';
+            if(activeBtn) currentCat = activeBtn.textContent.trim();
+            render(currentCat, e.target.value);
+        }, 300);
     });
-                
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
         </script>
 
 
