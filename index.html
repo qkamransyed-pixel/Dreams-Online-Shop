@@ -2034,19 +2034,9 @@ if (category === 'All' && !term) {
 }
 
                 // Initialize
-                loadingMsg.style.display = 'block';
+                loadingMsg.style.display = 'none';
                 createFilters();
                 render();
-// Search Event
-// Line 2041-2048
-const searchInput = document.getElementById('search');
-if (searchInput) {
-  searchInput.addEventListener('input', (e) => {
-    render('All', e.target.value);
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.filter-btn[data-category="All"]')?.classList.add('active');
-  });
-}
 
                 
         </script>
