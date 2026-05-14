@@ -2038,12 +2038,16 @@ if (category === 'All' && !term) {
                 createFilters();
                 render();
                 // Search Event
-                searchInput.addEventListener('keyup', (e) => {
-                    const activeBtn = document.querySelector('.filter-btn.active');
-                    let currentCat = 'All';
-                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
-                    render(currentCat, e.target.value);
-                });
+                let searchTimeout;
+searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        let currentCat = 'All';
+        if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+        render(currentCat, e.target.value);
+    }, 300);
+});
 
             } catch (error) {
                 document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
