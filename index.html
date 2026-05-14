@@ -1978,9 +1978,18 @@
 
     // 3. Search Filter
     if (term) {
-  productsToRender = productsToRender.filter(p => 
-    (p.name || p.title || p.desc || p.description || JSON.stringify(p)).toLowerCase().includes(term)
-  );
+  productsToRender = productsToRender.filter(p => {
+    let text = '';
+    if (p.name) text += p.name + ' ';
+    if (p.title) text += p.title + ' ';
+    if (p.desc) text += p.desc + ' ';
+    if (p.description) text += p.description + ' ';
+    if (p.cat) text += p.cat + ' ';
+    // Agar upar kuch na mile to pura object check karo
+    if (!text) text = JSON.stringify(p);
+    
+    return text.toLowerCase().includes(term);
+  });
 }
 
     // Limit for Main Page - 200 Products Only
