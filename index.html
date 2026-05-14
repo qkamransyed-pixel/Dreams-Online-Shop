@@ -2037,7 +2037,19 @@ if (category === 'All' && !term) {
                 loadingMsg.style.display = 'none';
                 createFilters();
                 render();
+                // Search Event
+                searchInput.addEventListener('keyup', (e) => {
+                    const activeBtn = document.querySelector('.filter-btn.active');
+                    let currentCat = 'All';
+                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+                    render(currentCat, e.target.value);
+                });
 
+            } catch (error) {
+                document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
+                console.error(error);
+            }
+        });
                 
         </script>
 
