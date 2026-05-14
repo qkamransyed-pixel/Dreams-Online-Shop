@@ -2047,14 +2047,13 @@ let searchTimeout;
 searchInput.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
-        const term = e.target.value;
+        const term = e.target.value.trim();
 
-        // Agar search me kuch likha hai to category All kar do
-        if (term.trim()!== '') {
+        if (term !== '') {
             // All button ko active banao
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.childNodes[0].textContent.trim() === 'All') {
+                if (btn.textContent.trim() === 'All') {
                     btn.classList.add('active');
                 }
             });
@@ -2063,7 +2062,7 @@ searchInput.addEventListener('input', (e) => {
             // Search khali hai to purani category pe wapas jao
             const activeBtn = document.querySelector('.filter-btn.active');
             let currentCat = 'All';
-            if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+            if(activeBtn) currentCat = activeBtn.textContent.trim();
             render(currentCat, '');
         }
     }, 300);
