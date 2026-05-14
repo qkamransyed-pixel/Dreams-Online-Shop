@@ -2039,13 +2039,13 @@ if (category === 'All' && !term) {
                 render();
 
                 // Search Event
-                searchInput.addEventListener('keyup', (e) => {
-                    const activeBtn = document.querySelector('.filter-btn.active');
-                    let currentCat = 'All';
-                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
-                    console.log('Searching:', e.target.value);
-                    render(currentCat, e.target.value);
-                });
+searchInput.addEventListener('input', (e) => {
+  console.log('Searching:', e.target.value);
+  render('All', e.target.value);
+  
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('.filter-btn[data-category="All"]')?.classList.add('active');
+});
 
             } catch (error) {
                 document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
