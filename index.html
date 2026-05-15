@@ -210,15 +210,7 @@
         <p>&copy; 2026 All Rights Reserved.</p>
     </footer>
 
-    <script>
-    
-console.log("Script started");
-window.addEventListener('DOMContentLoaded', () => {
-        window.addEventListener('DOMContentLoaded', () => {
-            try {
-
-                // ================= NEWEST MANUAL ADDITION (DEC 26) - TOP PRIORITY =================
-                let latestManualAdditionsDec26 = [
+          let latestManualAdditionsDec26 = [
                     { title: "Ekouaer Sleepwear Sexy Lingerie Nightgown Lace Chemise Satin Slip Silk Negligee Nightie Bridal Babydoll for Women", link: "https://amzn.to/4j7yvSn", image: "https://m.media-amazon.com/images/I/81vZOd10pHL._AC_SY879_.jpg", price: "$14.98", cat: "Nightgown" },
                     { title: "Ekouaer Silk Pajamas for Women Short Sleeve Sleepwear Soft Button Down Loungewear 2 Piece Satin Pjs Shorts Set", link: "https://amzn.to/4p00JzC", image: "https://m.media-amazon.com/images/I/71bqadkXkoL._AC_SY879_.jpg", price: "$16.99", cat: "Pajamas" },
                     { title: "Ekouaer Satin Pajama Set for Women 2 Piece Silky Lingerie Sleepwear Lace Camisole Pj Shorts Set Soft Nightwear S-XXL", link: "https://amzn.to/4pQHhXA", image: "https://m.media-amazon.com/images/I/71zgMYZObDL._AC_SY879_.jpg", price: "$14.99", cat: "Pajamas" },
@@ -1880,96 +1872,22 @@ window.addEventListener('DOMContentLoaded', () => {
                     "https://amzn.to/3Mjgi89", "https://amzn.to/3XFOIEy", "https://amzn.to/44fprVk", "https://amzn.to/4a3wxQA", 
                     "https://amzn.to/3KMaBPt", "https://amzn.to/4oFpaCq"
                 ];
-                console.log("Testing..."); 
-const grid = document.getElementById('grid');
-const searchInput = document.getElementById('search');
-const filterContainer = document.getElementById('filters');
-const loadingMsg = document.getElementById('loading-msg');
-const allProducts = latestManualAdditionsDec26 || [];                
 
-function createFilters() {
-    const cats = ['All', ...new Set(allProducts.map(p => p.cat))].sort();
-    filterContainer.innerHTML = '';
-    cats.forEach(cat => {
-        let count = (cat === 'All') ? allProducts.length : allProducts.filter(p => p.cat === cat).length;
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.dataset.category = cat;
-        if(cat === 'All') btn.classList.add('active');
-        btn.innerHTML = `${cat} <span class="count-badge">${count}</span>`;
-        btn.onclick = () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            render(cat, searchInput.value);
-        };
-        filterContainer.appendChild(btn);
-    });
-}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('grid');
+  const loadingMsg = document.getElementById('loading-msg');
 
-function render(category = 'All', search = '') {
-    grid.innerHTML = '';
-    const term = search.toLowerCase();
-    let productsToRender = [...allProducts];
-    
-    if (category !== 'All') {
-        productsToRender = productsToRender.filter(p => p.cat === category);
-    }
-    if (term) {
-        productsToRender = productsToRender.filter(p =>
-            ((p.title || p.name || '')).toLowerCase().includes(term)
-        );
-    }
-    if (category === 'All' && !term) {
-        productsToRender = productsToRender.slice(0, 200);
-    }
-    if (productsToRender.length === 0) {
-        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
-        loadingMsg.style.display = 'none';
-        return;
-    }
-    productsToRender.forEach(p => {
-        let lowerCat = (p.cat || '').toLowerCase();
-        let catClass = lowerCat.replace(/\s+/g, '-');
-                                 
-       let visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;">`; const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
-        const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
-        const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
+  grid.innerHTML = latestManualAdditionsDec26.map(p => `
+    <div class="card">
+      <h3>${p.title}</h3>
+      <a href="${p.link}" target="_blank">Buy Now</a>
+    </div>
+  `).join('');
 
-        let html = `
-            <div class="product-card">
-                <div class="product-image">${visualContent}</div>
-                <div class="product-info">
-                    <h3>${p.title || p.name}</h3>
-                    ${priceDisplay}
-                    <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-        `;
-        grid.innerHTML += html;
-    });
-}
-
-                // Initialize
-                loadingMsg.style.display = 'none';
-                createFilters();
-                render();
-
-                // Search Event
-                searchInput.addEventListener('keyup', (e) => {
-                    const activeBtn = document.querySelector('.filter-btn.active');
-                    let currentCat = 'All';
-                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
-                    render(currentCat, e.target.value);
-                });
-
-            } catch (error) {
-                document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
-                console.error(error);
-            }
-        });
-        </script>
+  loadingMsg.style.display = 'none';
+});
+</script>
 
 </body>
 </html>
-
-                    
