@@ -1999,7 +1999,10 @@
         if (term) {
     productsToRender = productsToRender.slice(0, 50);
 }
-
+console.log("Products:", productsToRender);
+if (!productsToRender || productsToRender.length === 0) {
+    document.querySelector('.loading').innerHTML = "No products found";
+}
     // 6. Render - تمہارا پرانا Card والا Code
  productsToRender.forEach(p => {
     let icon = 'fa-box';
