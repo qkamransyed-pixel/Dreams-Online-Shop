@@ -1878,7 +1878,7 @@
                     "https://amzn.to/3KMaBPt", "https://amzn.to/4oFpaCq"
                 ];
 
-                // Merge Generated Toys (Price Hidden)
+                                // Merge Generated Toys (Price Hidden)
                 toyLinks.forEach((url, index) => {
                     products.push({
                         title: `Adult Toy/Dolls ${index + 1}`,
@@ -1969,7 +1969,6 @@
     const term = search.toLowerCase();
 
     // 1. Master Products سے شروع کرو - 1200 والے
-        
     let productsToRender = [...window.masterProducts];
        
     // 2. Category Filter
@@ -1979,91 +1978,73 @@
 
     // 3. Search Filter
     if (term) {
-  productsToRender = productsToRender.filter(p => {
-    let text = '';
-    if (p.name) text += p.name + ' ';
-    if (p.title) text += p.title + ' ';
-    if (p.desc) text += p.desc + ' ';
-    if (p.description) text += p.description + ' ';
-    if (p.cat) text += p.cat + ' ';
-    // Agar upar kuch na mile to pura object check karo
-    if (!text) text = JSON.stringify(p);
-    
-    return text.toLowerCase().includes(term);
-  });
-}
+        productsToRender = productsToRender.filter(p =>
+            (p.name || p.title || '').toLowerCase().includes(term)
+        );
+    }
 
-    if (category === 'All' &&!term) {
+    // Limit for Main Page - 200 Products Only
+if (category === 'All' && !term) {
     productsToRender = productsToRender.slice(0, 200);
+}
 
-        if (term) {
-    productsToRender = productsToRender.slice(0, 50);
-}
-console.log("Products:", productsToRender);
-if (!productsToRender || productsToRender.length === 0) {
-    document.querySelector('.loading').innerHTML = "No products found";
-}
+    // 5. No Products Found
+    if (productsToRender.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
+        return;
+    }
+
     // 6. Render - تمہارا پرانا Card والا Code
- productsToRender.forEach(p => {
-    let icon = 'fa-box';
-    let lowerCat = (p.cat || '').toLowerCase();
-    if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion')) {
-        icon = 'fa-shirt';
-    } else if (lowerCat.includes('book')) {
-        icon = 'fa-book';
-    }
+    productsToRender.forEach(p => {
+        let icon = 'fa-box';
+        let lowerCat = (p.cat || '').toLowerCase();
+        if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
+            icon = 'fa-shirt';
+        } else if (lowerCat.includes('book')) {
+            icon = 'book';
+        }
 
-    let visualContent = `<img src="https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;">`;
-    const priceDisplay = (p.price === "") ? "" : `<div class="price">${p.price}</div>`;
-    const linkUrl = (p.link && p.link.trim()!="") ? p.link : "#";
-    const targetAttr = (p.link && p.link.trim()!="") ? ' target="_blank"' : '';
+        let visualContent = '';
+        visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;" onerror="this.onerror=null; this.src='https://img.sanishtech.com/u/7a25959931ec0a91d89953cb73781945.jpg'; this.style.background='#000';">`;
+        const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
+        const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
+        const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
 
-    let html = `
-    <div class="product-card">
-      <div class="product-image">${visualContent}</div>
-      <div class="product-info">
-        <h3>${p.title || p.name}</h3>
-        ${priceDisplay}
-        <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
-      </div>
-    </div>
-    `;
-
-    const grid = document.querySelector('.products-grid') || document.querySelector('#products') || document.querySelector('.grid');
-    if (grid) {
+        let html = `
+            <div class="product-card">
+                <div class="product-image">${visualContent}</div>
+                <div class="product-info">
+                    <h3>${p.title || p.name}</h3>
+                    ${priceDisplay}
+                    <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+        `;
         grid.innerHTML += html;
-    }
-});
-    
-    const grid = document.querySelector('.products-grid') || document.querySelector('#products') || document.querySelector('.product-container');
-    if (grid) {
-        grid.innerHTML += html;
-        console.log("Added to grid");
-    } else {
-        console.log("Grid not found");
-    }
-});   
-
-function init() {
-    // Initialize
-    if (typeof loadingMsg !== 'undefined') loadingMsg.style.display = 'none';
-    if (typeof createFilters === 'function') createFilters();
-    render();
-    
-    // Search Event
-    let searchTimeout;
-searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-        ...
-    }, 300);
-});
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
+    });
 }
-</script>               
+
+                // Initialize
+                loadingMsg.style.display = 'none';
+                createFilters();
+                render();
+
+                // Search Event
+                searchInput.addEventListener('keyup', (e) => {
+                    const activeBtn = document.querySelector('.filter-btn.active');
+                    let currentCat = 'All';
+                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+                    render(currentCat, e.target.value);
+                });
+
+            } catch (error) {
+                document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
+                console.error(error);
+            }
+        });
+        </script>
+
 </body>
 </html>
+
+                    
