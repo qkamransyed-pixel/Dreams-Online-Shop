@@ -1884,8 +1884,7 @@ const grid = document.getElementById('grid');
 const searchInput = document.getElementById('search');
 const filterContainer = document.getElementById('filters');
 const loadingMsg = document.getElementById('loading-msg');
-window.masterProducts = latestManualAdditionsDec26;
-const allProducts = window.masterProducts;                
+const allProducts = latestManualAdditionsDec26 || [];                
 
 function createFilters() {
     const cats = ['All', ...new Set(allProducts.map(p => p.cat))].sort();
