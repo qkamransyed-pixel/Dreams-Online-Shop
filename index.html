@@ -142,45 +142,7 @@
         
         footer { text-align: center; margin-top: 80px; padding: 30px; border-top: 1px solid #222; color: #666; font-size: 0.9rem; }
     </style>
-    <style>
-    @media screen and (min-width: 768px) {
-  body {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 20px !important;
-    display: block !important;
-  }
-
-  div.controls {
-    float: left !important;
-    width: 220px !important;
-    position: sticky !important;
-    top: 20px !important;
-    max-height: calc(100vh - 40px) !important;
-    overflow-y: auto !important;
-    display: block !important;
-    -webkit-overflow-scrolling: touch !important; /* ye add karo */
-  }
-
-  #search {
-    position: relative !important;
-    z-index: 2 !important; /* ye add karo */
-  }
-
-  div.container {
-    margin-left: 245px !important;
-    width: auto !important;
-    float: none !important;
-    display: block !important;
-  }
-
-  div.container .products-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 20px !important;
-  }
-}
-</style>
+ 
 </head>
 <body>
 
@@ -209,9 +171,13 @@
         <p>Email: info@dreamshoppingshop.com</p>
         <p>&copy; 2026 All Rights Reserved.</p>
     </footer>
-    <script>
 
-          let latestManualAdditionsDec26 = [
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+
+                // ================= NEWEST MANUAL ADDITION (DEC 26) - TOP PRIORITY =================
+                let latestManualAdditionsDec26 = [
                     { title: "Ekouaer Sleepwear Sexy Lingerie Nightgown Lace Chemise Satin Slip Silk Negligee Nightie Bridal Babydoll for Women", link: "https://amzn.to/4j7yvSn", image: "https://m.media-amazon.com/images/I/81vZOd10pHL._AC_SY879_.jpg", price: "$14.98", cat: "Nightgown" },
                     { title: "Ekouaer Silk Pajamas for Women Short Sleeve Sleepwear Soft Button Down Loungewear 2 Piece Satin Pjs Shorts Set", link: "https://amzn.to/4p00JzC", image: "https://m.media-amazon.com/images/I/71bqadkXkoL._AC_SY879_.jpg", price: "$16.99", cat: "Pajamas" },
                     { title: "Ekouaer Satin Pajama Set for Women 2 Piece Silky Lingerie Sleepwear Lace Camisole Pj Shorts Set Soft Nightwear S-XXL", link: "https://amzn.to/4pQHhXA", image: "https://m.media-amazon.com/images/I/71zgMYZObDL._AC_SY879_.jpg", price: "$14.99", cat: "Pajamas" },
@@ -337,9 +303,13 @@
   { title: 'GXXGE 4Pack Nursing Bra for Breastfeeding Maternity Bras Push Up Silk Seamless Pregnancy Bralette Underwear', link: 'https://amzn.to/4ujJRH7', image: 'https://m.media-amazon.com/images/I/714tvRJN-ML._AC_SX679_.jpg', price: '$29.99', cat: 'Baby Care' },
   { title: 'Frida Baby 4-in-1 Grow-with-Me Baby Bathtub, Baby Tub for Newborns to Toddler with Removable Bath Seat & Backrest for Bath Support in Tub', link: 'https://amzn.to/3QK4zSe', image: 'https://m.media-amazon.com/images/I/71ok+FA6jWL._AC_SL1500_.jpg', price: '$40.99', cat: 'Baby Care' },
   { title: 'Love to Dream Swaddle UP, Baby Sleep Sack, Self-Soothing Swaddles for Newborns, Improves Sleep, Snug Fit Helps Calm Startle Reflex, New Born Essentials for Baby, Small 8-13lbs, Gray', link: 'https://amzn.to/4tlNCeA', image: 'https://m.media-amazon.com/images/I/61KhY1+fXBL._AC_SL1228_.jpg', price: '$34.95', cat: 'Baby Care' },
-  { title: 'Frida Mom 8pc Postpartum Underwear', link: 'https://amzn.to/3QK4L3U', image: 'https://m.media-amazon.com/images/I/81iYWAtJtGL._AC_SX679_.jpg', price: '$11.89', cat: 'Baby Care' },
-
-                  { title: "INNERSY Womens Underwear Cotton Hipster Panties Regular & Plus Size 6-Pack", link: "https://amzn.to/48XzEau", image: "https://m.media-amazon.com/images/I/71KR3uOS5EL._AC_SX679_.jpg", price: "$19.99", cat: "Underwear" },
+  { title: 'Frida Mom 8pc Postpartum Underwear', link: 'https://amzn.to/3QK4L3U', image: 'https://m.media-amazon.com/images/I/81iYWAtJtGL._AC_SX679_.jpg', price: '$11.89', cat: 'Baby Care' }
+];
+    
+  
+                // ================= NEWEST MANUAL ADDITION (DEC 18) - TOP PRIORITY =================
+                let latestManualAdditionsDec18 = [
+                    { title: "INNERSY Womens Underwear Cotton Hipster Panties Regular & Plus Size 6-Pack", link: "https://amzn.to/48XzEau", image: "https://m.media-amazon.com/images/I/71KR3uOS5EL._AC_SX679_.jpg", price: "$19.99", cat: "Underwear" },
                     { title: "Womens Underwear Seamless Sexy Lace Ladies Panties No Show Cheeky Hipster Bikini Briefs 6 Pack", link: "https://amzn.to/3MEeuXy", image: "https://m.media-amazon.com/images/I/71lg4yk3tNL._AC_SX679_.jpg", price: "$3.99", cat: "Underwear" },
                     { title: "Avidlove Women Lace Panties Hollow Out Rear Bowknot Underwear Ruffle Cheeky Briefs 1-3 Pack", link: "https://amzn.to/490XuCg", image: "https://m.media-amazon.com/images/I/71agpBh1FpL._AC_SY879_.jpg", price: "$8.59", cat: "Underwear" },
                     { title: "Women’s Hollow Lace Underwear High Waisted Hipster Underpants Stretch Full Coverage Panties Ladies Briefs 4pcs", link: "https://amzn.to/4qfXntC", image: "https://m.media-amazon.com/images/I/71OpLPVFXgL._AC_SX679_.jpg", price: "$19.99", cat: "Underwear" },
@@ -415,8 +385,11 @@
                     { title: "Women Bandeau Bra Padded Strapless Bralette Bra Seamless Bandeau Tube Top", link: "https://amzn.to/3MNctrP", image: "https://m.media-amazon.com/images/I/71RRj-HpD1L._AC_SY879_.jpg", price: "$14.99", cat: "Lingerie" },
                     { title: "Vanity Fair Women’s Gel Touch Padded Strapless Push Up Bra (32A – 38D)", link: "https://amzn.to/4aTlCsV", image: "https://m.media-amazon.com/images/I/81tYsgQRCaL._AC_SY879_.jpg", price: "$32.10", cat: "Lingerie" },
                     { title: "HBselect Strapless Bras for Women Seamless Non-Slip Silicone Padded Bandeau Bra Comfort Wireless Tube Top Bralette", link: "https://amzn.to/4qbI9pe", image: "https://m.media-amazon.com/images/I/718TJ1aUdlL._AC_SY879_.jpg", price: "$12.74", cat: "Lingerie" },
-                    { title: "Plusexy Women’s Push Up Strapless Bra Thick Padded Underwire Convertible Multiway Bras", link: "https://amzn.to/4al0V9g", image: "https://m.media-amazon.com/images/I/51BfaoX6M7L._AC_SX679_.jpg", price: "$28.99", cat: "Lingerie" },
-                
+                    { title: "Plusexy Women’s Push Up Strapless Bra Thick Padded Underwire Convertible Multiway Bras", link: "https://amzn.to/4al0V9g", image: "https://m.media-amazon.com/images/I/51BfaoX6M7L._AC_SX679_.jpg", price: "$28.99", cat: "Lingerie" }
+                ];
+
+                // ================= LATEST REQUEST (DEC 17) - TOP PRIORITY =================
+                let latestRequestsDec17 = [
                     { title: "G Spot Vibrator Dildo with 10 Vibration Modes, Tuitionua Soft Silicone Powerful Vibrating Massagers for Clitoral Vagina and Anal Stimulation, Adult Sex Toys for Women or Men(Green)", link: "https://amzn.to/4pGBrYI", image: "https://m.media-amazon.com/images/I/51nwtA8Ja8L._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$15.99", cat: "Toys & Vibrators Adult" },
                     { title: "BBW Sex Doll Pocket Pussy Ass Male Masturbator with Thickened Vulva & Everted Labia, Realistic Sex Toy with Skin Texture, JOYTOO 5.5LB Brown Adult Male Sex Toy for Men Masturbation", link: "https://amzn.to/4s0Gt3w", image: "https://m.media-amazon.com/images/I/61Db6UyCB-L._AC_SL1000_.jpg", price: "$29.29", cat: "Toys & Vibrators Adult" },
                     { title: "Vibrator Bullet Adult Toys – Mini Vibrators Couples Sex Toys with 7 Vibration Modes,Double Egg Female Clitoral Stimulator Adult Sex Toys & Games,Remote Control Vibrator Sexual Pleasure Tools for Women", link: "https://amzn.to/4adD0s9", image: "https://m.media-amazon.com/images/I/61V-x7LI6AL._AC_SL1500_.jpg", price: "$15.99", cat: "Toys & Vibrators Adult" },
@@ -488,8 +461,11 @@
                     { title: "Women’s Shine Strap Underwear Sexy Comfortable Panties Underwear", link: "https://amzn.to/48XyID0", image: "https://m.media-amazon.com/images/I/71cBfEPIBhL._AC_SX679_.jpg", price: "$7.99", cat: "Underwear" },
                     { title: "Avidlove Womens Underwear Lace Cheeky Panties Criss Cross Back Bikini Thongs Sexy Undies", link: "https://amzn.to/44u88jx", image: "https://m.media-amazon.com/images/I/71eX9Le7i5L._AC_SY879_.jpg", price: "$9.99", cat: "Underwear" },
                     { title: "Avidlove 1 or 3 Pack Cheeky Underwear for Women Lace No Show Bikini Soft Breathe hipster panties", link: "https://amzn.to/49jwpKP", image: "https://m.media-amazon.com/images/I/81lwlUTZjPL._AC_SY879_.jpg", price: "$9.49", cat: "Underwear" },
-                    { title: "Smart & Sexy womens Signature Lace Cheeky Panty", link: "https://amzn.to/3YsV6PF", image: "https://m.media-amazon.com/images/I/71p6WEjhxjL._AC_SY879_.jpg", price: "$14.00", cat: "Underwear" },
-                
+                    { title: "Smart & Sexy womens Signature Lace Cheeky Panty", link: "https://amzn.to/3YsV6PF", image: "https://m.media-amazon.com/images/I/71p6WEjhxjL._AC_SY879_.jpg", price: "$14.00", cat: "Underwear" }
+                ];
+
+                // ================= NEW 64 PRODUCTS (ADDED TOP PRIORITY) =================
+                let newestAdditions = [
                     { title: "Natural Feelings Buttercloud 4 Pack Biker Shorts for Women-8” High Waist Tummy Control Workout Shorts Athletic Gym Yoga Pants", link: "https://amzn.to/48Yd3L3", image: "https://m.media-amazon.com/images/I/71do4ImCRDL._AC_SX679_.jpg", price: "$19.99", cat: "Activewear" },
                     { title: "AUROLA Power Workout Leggings for Women Tummy Control Squat Proof Ribbed Thick Seamless Scrunch Active Pants", link: "https://amzn.to/4pFhcdT", image: "https://m.media-amazon.com/images/I/51XQr5oc8VL._AC_SX679_.jpg", price: "$49.99", cat: "Activewear" },
                     { title: "Leggings Depot Premium Women’s Joggers Popular Print High Waist Track Pants (S-XL) BAT5", link: "https://amzn.to/3YxoDYo", image: "https://m.media-amazon.com/images/I/71SemyqgflL._AC_SY879_.jpg", price: "$13.99", cat: "Activewear" },
@@ -553,8 +529,11 @@
                     { title: "Milumia Women Sexy Floral Lace Underwear Criss Cross Seamless Bikini Panty Brief", link: "https://amzn.to/4q9qK0u", image: "https://m.media-amazon.com/images/I/71AvikrbEqL._AC_SY879_.jpg", price: "$12.99", cat: "Underwear" },
                     { title: "Joer Women Sexy Bodysuit Sheer Lace Trim Lingerie Strappy Back Mesh Babydoll Teddy Deep V Halter Underwear Free Size", link: "https://amzn.to/4pLAIFK", image: "https://m.media-amazon.com/images/I/51ceQitBiVL._AC_SY879_.jpg", price: "$17.88", cat: "Lingerie" },
                     { title: "Sex Doll Male Masturbator for Men Flesh Pocket Pussies Light Pleasure Sex Toys for Men,4.18 LB Realistic Entry-Level Ass,2 in 1 Lifelike Butt with Vagina and Anal Channel", link: "https://amzn.to/3Y01rC3", image: "https://m.media-amazon.com/images/I/51ikt4go-zL._AC_SL1000_.jpg", price: "$17.99", cat: "Toys & Vibrators Adult" },
-                    { title: "1.5lb Pocket Pussy for Men Masturbators, Realistic Male Masturbator with Virgin Vagina and Anal, Female Torso Hip Adult Toys Love Dolls, Pussy Ass Masturbator Sex Toys with 2 Hole for Man", link: "https://amzn.to/4aC2nEn", image: "https://m.media-amazon.com/images/I/51YxF8S+aYL._AC_SL1500_.jpg", price: "$17.99", cat: "Toys & Vibrators Adult" },
-                
+                    { title: "1.5lb Pocket Pussy for Men Masturbators, Realistic Male Masturbator with Virgin Vagina and Anal, Female Torso Hip Adult Toys Love Dolls, Pussy Ass Masturbator Sex Toys with 2 Hole for Man", link: "https://amzn.to/4aC2nEn", image: "https://m.media-amazon.com/images/I/51YxF8S+aYL._AC_SL1500_.jpg", price: "$17.99", cat: "Toys & Vibrators Adult" }
+                ];
+
+                // ================= LATEST UPDATE REQUEST =================
+                let latestUpdateRequests = [
                     { title: "Avidlove Women Sexy Sleepwear Lace Chemise Nightgown Full Slip Babydoll Sleepwear", link: "https://amzn.to/4qa8GmZ", image: "https://m.media-amazon.com/images/I/71KaTlO7pCL._AC_SY879_.jpg", price: "$16.99", cat: "Nightgown" },
                     { title: "SWOMOG Women’s Pajamas Set Long Sleeve Sleepwear with Long Pants Soft Modal Loungewear Pj Set", link: "https://amzn.to/4iTpqwe", image: "https://m.media-amazon.com/images/I/61G9TsV11ZL._AC_SY879_.jpg", price: "$23.99", cat: "Pajamas" },
                     { title: "Avidlove Women Lingerie Deep V Neck Nightwear One Piece Sexy Nightgowns Mosaic Lace Mesh Dress", link: "https://amzn.to/4rQvTw1", image: "https://m.media-amazon.com/images/I/71DshrxsFbL._AC_SY879_.jpg", price: "$9.99", cat: "Nightgown" },
@@ -618,8 +597,11 @@
                     { title: "EAMTI 3CT 925 Sterling Silver Engagement Rings Oval Cut Solitaire Cubic Zirconia CZ Wedding Promise Rings for Her Wedding Bands for Women Sizee 3-11", link: "https://amzn.to/44ZJqaN", image: "https://m.media-amazon.com/images/I/51DZqZEq10L._AC_SY695_.jpg", price: "$24.99", cat: "Jewelry" },
                     { title: "PAVOI 14K Gold Plated Rings – Oval Cubic Zirconia Love Ring and Eternity Ring – 5mm Stackable for Women", link: "https://amzn.to/4rWYwrq", image: "https://m.media-amazon.com/images/I/71i2Y+1BPcL._AC_SY695_.jpg", price: "$16.95", cat: "Jewelry" },
                     { title: "PAVOI 14K Gold Plated Cubic Zirconia Twisted Rope Eternity Band for Women", link: "https://amzn.to/3KwjrRz", image: "https://m.media-amazon.com/images/I/61mTmLfooFL._AC_SY695_.jpg", price: "$14.95", cat: "Jewelry" },
-                    { title: "ThunderFit Silicone Anniversary Rings for Women, 5.5mm Wide, 2mm Thick, Wedding Rubber Bands, Variety Multipack 1-12", link: "https://amzn.to/3Myvtug", image: "https://m.media-amazon.com/images/I/61fe6PYVw2L._AC_SY695_.jpg", price: "$9.99", cat: "Jewelry" },
-                
+                    { title: "ThunderFit Silicone Anniversary Rings for Women, 5.5mm Wide, 2mm Thick, Wedding Rubber Bands, Variety Multipack 1-12", link: "https://amzn.to/3Myvtug", image: "https://m.media-amazon.com/images/I/61fe6PYVw2L._AC_SY695_.jpg", price: "$9.99", cat: "Jewelry" }
+                ];
+
+                // ================= NEW SLEEPWEAR BATCH (TOP PRIORITY) =================
+                let sleepwearRequests = [
                     { title: "Ekouaer Women’s Nightgown V-Neck Loungewear Long Sleeve Sleepwear Full Length Nightgown for Women S-4XL", link: "https://amzn.to/48QCPRj", image: "https://m.media-amazon.com/images/I/71rtNPHd-CL._AC_SY879_.jpg", price: "$22.79", cat: "Nightgown" },
                     { title: "Avidlove Women Cami Pajama Set Modal Sleepwear Lace Trim Short PJ Set with Shorts", link: "https://amzn.to/4q5wCI3", image: "https://m.media-amazon.com/images/I/718bbTQhq8L._AC_SY879_.jpg", price: "$16.14", cat: "Pajamas" },
                     { title: "Ekouaer Silk Pajamas for Women Satin Cami Pjs Set V Neck Camisole Shorts Set Adjustable Strap Sleepwear", link: "https://amzn.to/4qbrvGs", image: "https://m.media-amazon.com/images/I/615F--Vbp3L._AC_SX679_.jpg", price: "$16.99", cat: "Pajamas" },
@@ -669,8 +651,11 @@
                     { title: "Ekouaer Women’s Satin Nightshirt Button Down Sleepshirt Silk ¾ Sleeve Nightgown Boyfriend Notch Collar Sleepwear S-3XL", link: "https://amzn.to/3XTMVMc", image: "https://m.media-amazon.com/images/I/71tu9jJAKyL._AC_SY879_.jpg", price: "$14.98", cat: "Nightgown" },
                     { title: "Ekouaer Women’s Satin Silk Pleated Nightgown Loose Sleepwear Printed Nightshirt Short Sleeve Sleep Dress", link: "https://amzn.to/4rRroS5", image: "https://m.media-amazon.com/images/I/717QfWerjxL._AC_SY879_.jpg", price: "$14.24", cat: "Nightgown" },
                     { title: "Ekouaer Women’s Sleepshirt Deep V Neck Nightgown Batwing Nightshirt Oversized Sleepwear", link: "https://amzn.to/4oXUNay", image: "https://m.media-amazon.com/images/I/71iGZDcWmiL._AC_SY879_.jpg", price: "$14.24", cat: "Nightgown" },
-                    { title: "Ekouaer Satin Pajamas Women Lace Sleepwear Lingerie Cami Shorts Set Nightwear XS-XXL", link: "https://amzn.to/4q9fOjA", image: "https://m.media-amazon.com/images/I/71a8bwz-31L._AC_SY879_.jpg", price: "$13.98", cat: "Pajamas" },
-                
+                    { title: "Ekouaer Satin Pajamas Women Lace Sleepwear Lingerie Cami Shorts Set Nightwear XS-XXL", link: "https://amzn.to/4q9fOjA", image: "https://m.media-amazon.com/images/I/71a8bwz-31L._AC_SY879_.jpg", price: "$13.98", cat: "Pajamas" }
+                ];
+
+                // ================= NEW 64 PRODUCTS (MANUAL ADDITION - TOP OF LIST) =================
+                let manualAdditions = [
                     { title: "Women’s Sleeveless Ruched Maxi Dress Sexy Irregular Bodycon Casual Elegant Club Party Cocktail Long Dresses", link: "https://amzn.to/48Q29H7", image: "https://m.media-amazon.com/images/I/61KAmr2jMwL._AC_SY879_.jpg", price: "$60.99", cat: "Dresses" },
                     { title: "Swimwear Cover Up,Sexy Fashion Beach Hand Crochet Shawl Capelet Cover Up Sunscreen Net Triangle Fishnet Skirt", link: "https://amzn.to/3YqVOgk", image: "https://m.media-amazon.com/images/I/81IB6UnzsHL._AC_SX679_.jpg", price: "$17.99", cat: "Cover Ups" },
                     { title: "SUUKSESS Women Sexy Square Neck Tank Top Summer Y2K Going Out Basic Cami Shirt", link: "https://amzn.to/497FVBv", image: "https://m.media-amazon.com/images/I/61zTppJmCRL._AC_SX679_.jpg", price: "$29.96", cat: "Tops" },
@@ -734,8 +719,11 @@
                     { title: "Aamikast Women’s Pajama Sets Long Sleeve Button Down Sleepwear Nightwear Soft Pjs Lounge Sets", link: "https://amzn.to/4iYvrIj", image: "https://m.media-amazon.com/images/I/61rZ3uI6FgL._AC_SY879_.jpg", price: "$44.99", cat: "Sleepwear" },
                     { title: "Ekouaer Women Lace Nightgown Sexy Spaghetti Strap Cami Sleeveless Chemise Sleepwear", link: "https://amzn.to/4oWcEP0", image: "https://m.media-amazon.com/images/I/71UXxna+uML._AC_SY879_.jpg", price: "$13.71", cat: "Sleepwear" },
                     { title: "Ekouaer Women’s Nightgown V-neck Chemise Sleepwear Lace Nightwear Soft Lingerie", link: "https://amzn.to/44uTb0C", image: "https://m.media-amazon.com/images/I/61LuDVtDGxL._AC_SY879_.jpg", price: "$14.24", cat: "Sleepwear" },
-                    { title: "Avidlove Women Lingerie Lace Babydoll Strap Chemise Halter Teddy V Neck Sleepwear", link: "https://amzn.to/499dp2y", image: "https://m.media-amazon.com/images/I/81LbBZQ+z-L._AC_SY879_.jpg", price: "$14.98", cat: "Sleepwear" },
-                
+                    { title: "Avidlove Women Lingerie Lace Babydoll Strap Chemise Halter Teddy V Neck Sleepwear", link: "https://amzn.to/499dp2y", image: "https://m.media-amazon.com/images/I/81LbBZQ+z-L._AC_SY879_.jpg", price: "$14.98", cat: "Sleepwear" }
+                ];
+
+                // ================= PART 000000: ULTIMATE LATEST BATCH (ADDED PER REQUEST) =================
+                let ultimateBatchRequests = [
                     { title: "YKYI Electric Spin Scrubber,Cordless Cleaning Brush,Shower Cleaning Brush with 8 Replaceable Brush Heads,Power Scrubber 3 Adjustable Speeds,Adjustable & Detachable Long Handle,Voice Broadcast", link: "https://amzn.to/44o6Feq", image: "https://m.media-amazon.com/images/I/91gQJMVnnyL._AC_SL1500_.jpg", price: "$32.19", cat: "Home Gadgets" },
                     { title: "Ear Wax Removal – Earwax Remover Tool with 8 Pcs Ear Set – Ear Canal Cleaner with 1080P Camera – FSA HAS Eligible – Ear Cleaning Kit with 6 Ear Spoon – Ear Camera for iOS & Android (Black)", link: "https://amzn.to/3YpPEwY", image: "https://m.media-amazon.com/images/I/71-hDg5JQsL._AC_SL1500_.jpg", price: "$25.99", cat: "Wellness" },
                     { title: "9 Pack Refrigerator Mats,Washable Fridge Mats Liners Easy to Clear Fridge Pads Mat Shelves Drawer Table Mats Refrigerator Liners for Shelves,3Red/3Green/3Blue", link: "https://amzn.to/48BehNk", image: "https://m.media-amazon.com/images/I/61wqPAhZpyL._AC_SL1001_.jpg", price: "$10.39", cat: "Kitchen" },
@@ -763,8 +751,11 @@
                     { title: "ANRABESS Women Summer Deep V Neck Short Sleeve Dresses Slit Elegant Wedding Guest Formal Cocktail Evening Maxi Long Dress", link: "https://amzn.to/48ADYxt", image: "https://m.media-amazon.com/images/I/61jhx00e2DL._AC_SY879_.jpg", price: "$49.99", cat: "Dresses" },
                     { title: "PRETTYGARDEN Womens 2025 Summer Off The Shoulder Dress Ruched Bodycon Sleeveless Split Cocktail Party Maxi Dresses", link: "https://amzn.to/4rUul4e", image: "https://m.media-amazon.com/images/I/61NbZQBfblL._AC_SY879_.jpg", price: "$32.48", cat: "Dresses" },
                     { title: "PAVOI 14K Gold Plated Solid 925 Sterling Silver CZ Simulated Diamond Stackable Ring Eternity Bands for Women", link: "https://amzn.to/3KEvPil", image: "https://m.media-amazon.com/images/I/61OmckZxTuL._AC_SY695_.jpg", price: "$18.95", cat: "Jewelry" },
-                    { title: "TRUMIUM 2mm 4mm 6mm 8mm Tungsten Wedding Band Ring for Men Women Silver/Rose Gold Plated/Rainbow/Gold Plated Domed High Polish Engagement Promise Rings Comfort Fit 4-15", link: "https://amzn.to/4aSYE54", image: "https://m.media-amazon.com/images/I/61vig9CFs3L._AC_SY695_.jpg", price: "$17.29", cat: "Jewelry" },
-                
+                    { title: "TRUMIUM 2mm 4mm 6mm 8mm Tungsten Wedding Band Ring for Men Women Silver/Rose Gold Plated/Rainbow/Gold Plated Domed High Polish Engagement Promise Rings Comfort Fit 4-15", link: "https://amzn.to/4aSYE54", image: "https://m.media-amazon.com/images/I/61vig9CFs3L._AC_SY695_.jpg", price: "$17.29", cat: "Jewelry" }
+                ];
+
+                // ================= PART 00000: LATEST BATCH (KITCHEN, WELLNESS, TATTOOS, TOYS) =================
+                let newBatchRequests = [
                     { title: "NutraBlast Boric Acid Vaginal Suppositories – 100% Pure Made in USA – Boric Life Intimate Health Support (14 Count)", link: "https://amzn.to/4rU0FEc", image: "https://m.media-amazon.com/images/I/61ip2h8y0XL._AC_SL1500_.jpg", price: "$11.99", cat: "Wellness" },
                     { title: "Veet Professional 2 Minute Cream for All Skin Types with Shea Butter, Full Bikini & Pubic Hair Removal, Dermatologically Tested, 13.5 FL OZ Bottle w/Spatula", link: "https://amzn.to/3XMHqPk", image: "https://m.media-amazon.com/images/I/91ZwUNTELJL._SL1500_.jpg", price: "$9.99", cat: "Wellness" },
                     { title: "Hair Remover, Veet Gel Hair Removal Cream Sensitive, 13.5 Ounce, Sensitive formula with Aloe Vera and Vitamin E (pack of 1)", link: "https://amzn.to/44shrR0", image: "https://m.media-amazon.com/images/I/81sbRnkFFJL._SL1500_.jpg", price: "$9.47", cat: "Wellness" },
@@ -828,8 +819,11 @@
                     { title: "Titanium Cutting Board for Kitchen, Cutting Board Double Sided Food Grade, Pure Titanium/PP, Easy to Clean Large Size 15”×10.3”", link: "https://amzn.to/4iZULh4", image: "https://m.media-amazon.com/images/I/71ccyoxSUML._AC_SL1500_.jpg", price: "$29.55", cat: "Kitchen" },
                     { title: "Massage Gun, Muscle Massage Gun for Athletes Handheld Electric Deep Tissue Back Massager, Percussion Massage Device for Pain Relief with 30 Speed Levels", link: "https://amzn.to/4rUVaoM", image: "https://m.media-amazon.com/images/I/712UHB03CbL._AC_SL1500_.jpg", price: "$25.63", cat: "Wellness" },
                     { title: "kelamayi Upgrade Broom and Dustpan Set, Self-Cleaning with Dustpan Teeth, Indoor&Outdoor Sweeping, Ideal for Dog Cat Pets Home Use, Stand Up Broom and Dustpan", link: "https://amzn.to/3MwLTTP", image: "https://m.media-amazon.com/images/I/61zELlfqTPL._AC_SL1500_.jpg", price: "$18.83", cat: "Home Gadgets" },
-                    { title: "Ecolution Patented Micro-Pop Microwave Popcorn Popper with Temperature Safe Glass, 3-in-1 Lid Measures Kernels and Melts Butter, Made Without BPA, Dishwasher Safe", link: "https://amzn.to/4af5kuk", image: "https://m.media-amazon.com/images/I/71ayG3bZ7yL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$19.99", cat: "Kitchen" },
+                    { title: "Ecolution Patented Micro-Pop Microwave Popcorn Popper with Temperature Safe Glass, 3-in-1 Lid Measures Kernels and Melts Butter, Made Without BPA, Dishwasher Safe", link: "https://amzn.to/4af5kuk", image: "https://m.media-amazon.com/images/I/71ayG3bZ7yL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$19.99", cat: "Kitchen" }
+                ];
                 
+                // ================= PART 00: TECH & WELLNESS (NEWEST ADDITIONS) =================
+                let techAndWellnessRequests = [
                     { title: "Apple 2025 MacBook Air 13-inch Laptop with M4 chip: Built for Apple Intelligence, 13.6-inch Liquid Retina Display, 16GB Unified Memory, 512GB SSD Storage", link: "https://amzn.to/44RmGty", image: "https://m.media-amazon.com/images/I/71tFn+l-yUL._AC_SL1500_.jpg", price: "$999.00", cat: "Laptops" },
                     { title: "HP 15.6” Full HD Touchscreen Laptop | Intel i7-1355U | 16GB RAM | 512GB SSD | Intel Iris Xe Graphics | Win 11 | Fast Charge | Wi-Fi 6", link: "https://amzn.to/3XMdDGx", image: "https://m.media-amazon.com/images/I/71cKyAsJZPL._AC_SL1500_.jpg", price: "$649.49", cat: "Laptops" },
                     { title: "Apple 2025 MacBook Air 15-inch Laptop with M4 chip: Built for Apple Intelligence, 15.3-inch Liquid Retina Display, 16GB Unified Memory, 512GB SSD", link: "https://amzn.to/4q2Az05", image: "https://m.media-amazon.com/images/I/71Gwhs5uAxL._AC_SL1500_.jpg", price: "$1,199.90", cat: "Laptops" },
@@ -892,8 +886,11 @@
                     { title: "Lemme Purr Vaginal Probiotic Gummies for Women – Balanced pH, Healthy Odor & Flora Support – Pineapple (60 Count)", link: "https://amzn.to/4adMROC", image: "https://m.media-amazon.com/images/I/71AwX8bsf8L._AC_SL1500_.jpg", price: "$29.99", cat: "Wellness" },
                     { title: "Kegel Tightener Balls: for Vaginal Tightening Ben Wa Balls for Women Pelvic Floor Muscle Strengthening Set", link: "https://amzn.to/44oNfGt", image: "https://m.media-amazon.com/images/I/610VALkCcmL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$29.90", cat: "Wellness" },
                     { title: "Happy V Dr. Formulated Vaginal Probiotics for Women Odor & Itch Support, Urinary & Gut Health, pH Balance", link: "https://amzn.to/4pZYCg5", image: "https://m.media-amazon.com/images/I/71wErhEH3xL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$39.99", cat: "Wellness" },
-                    { title: "Femallay Organic Vaginal Melts – Pineapple – 100% Natural Relief for Dryness, Odor & Discomfort – 14 Count", link: "https://amzn.to/4rQX6P5", image: "https://m.media-amazon.com/images/I/51yWddzSJQL._SL1000_.jpg", price: "$28.99", cat: "Wellness" },
-                
+                    { title: "Femallay Organic Vaginal Melts – Pineapple – 100% Natural Relief for Dryness, Odor & Discomfort – 14 Count", link: "https://amzn.to/4rQX6P5", image: "https://m.media-amazon.com/images/I/51yWddzSJQL._SL1000_.jpg", price: "$28.99", cat: "Wellness" }
+                ];
+
+                // ================= PART 000: LATEST ADDED (NEWEST REQUEST) =================
+                let latestAddedRequests = [
                     { title: "Speedo Womens Swimsuit One Piece Classic Coverage Endurance+ Solid Adult Club Training", link: "https://amzn.to/48ShhDS", image: "https://m.media-amazon.com/images/I/719GESbuQAL._AC_SX679_.jpg", price: "$26.02", cat: "One Piece" },
                     { title: "Daci One Piece Swimsuit for Women – Tummy Control Bathing Suit with Scalloped Square Neck Retro Swimwear 2026", link: "https://amzn.to/4rLsMp7", image: "https://m.media-amazon.com/images/I/71RSuay-jfL._AC_SY879_.jpg", price: "$29.99", cat: "One Piece" },
                     { title: "Viottiset Women’s Cut Out Drawstring One Piece Swimsuit Cheeky High Cut Bathing Suit", link: "https://amzn.to/4oZAABi", image: "https://m.media-amazon.com/images/I/61hp1F+Ee6L._AC_SY879_.jpg", price: "$35.99", cat: "One Piece" },
@@ -980,8 +977,11 @@
                     { title: "SHENHE Women’s Micro Bikini Top Halter Neck Low Cut Bikini Tie Back Sexy Swimsuit Top", link: "https://amzn.to/3Mpnakr", image: "https://m.media-amazon.com/images/I/71A7dgsilsL._AC_SY879_.jpg", price: "$16.99", cat: "Micro Bikini" },
                     { title: "Hot Extreme Micro Bikini Bottom. Sexy Thong Swimsuit. Designer Womens Swimwear.", link: "https://amzn.to/48QfvmL", image: "https://m.media-amazon.com/images/I/81fkh1EwsZS._AC_SX679_.jpg", price: "$96.00", cat: "Micro Bikini" },
                     { title: "Women 2 Pieces Mini Bikini Set Sexy Cut Out Swimwear Halter Micro Lingerie Tie String Swimsuit", link: "https://amzn.to/4rTKMO4", image: "https://m.media-amazon.com/images/I/61j8ODmfYiL._AC_SY879_.jpg", price: "$11.99", cat: "Micro Bikini" },
-                    { title: "Womens Sexy Micro Bikini Set Extreme Halterneck Tiny String Tie Side Two Piece Swimsuit", link: "https://amzn.to/3KWrOG0", image: "https://m.media-amazon.com/images/I/61oI85t9P8L._AC_SX679_.jpg", price: "$6.99", cat: "Micro Bikini" },
-                
+                    { title: "Womens Sexy Micro Bikini Set Extreme Halterneck Tiny String Tie Side Two Piece Swimsuit", link: "https://amzn.to/3KWrOG0", image: "https://m.media-amazon.com/images/I/61oI85t9P8L._AC_SX679_.jpg", price: "$6.99", cat: "Micro Bikini" }
+                ];
+
+                // ================= PART 00: NEW REQUESTS (ADDED TOP OF LIST) =================
+                let addedRequests = [
                     { title: "Women Sexy One Piece Swimsuit High Cut Monokini Open Front Swimwear Sexy Deep V Beachwear", link: "https://amzn.to/48wp7nF", image: "https://m.media-amazon.com/images/I/51Mb5jaNKkL._AC_SY879_.jpg", price: "$7.99", cat: "One Piece" },
                     { title: "Faringoto Sexy Bathing Suit Women Swimwear Thong One Piece Swimsuit", link: "https://amzn.to/49439se", image: "https://m.media-amazon.com/images/I/710oH3eaI-L._AC_SY879_.jpg", price: "$18.99", cat: "One Piece" },
                     { title: "Bodysuit for Womens Monokini Bathing Suit Hi Cut Side Open Buckle See Through One Piece Swimsuit, One Size", link: "https://amzn.to/44UjH3v", image: "https://m.media-amazon.com/images/I/513KcBXcCSL._AC_SY879_.jpg", price: "$13.99", cat: "Monokini" },
@@ -1025,8 +1025,11 @@
                     { title: "Realistic Sex Doll Male Masturbator Adult Sex Toys for Men, 7.2LB Pocket Pussy with Poseable Legs, Pussy Ass Blowjob Stroker with 2 Hole Deeper Vagina & Tight Anal, Male Sex Toy for Men Masturbation", link: "https://amzn.to/4a9VPwr", image: "https://m.media-amazon.com/images/I/61Wuu2Qj69L._AC_SL1500_.jpg", price: "$35.98", cat: "Toys & Vibrators Adult" },
                     { title: "Sex Dolls Male Masturbation – Pocket Kitty Silicone Anime Dolls with Realistic Vagina Anal Big Breasts, Realistic Female Hands Free Male Masturbation, Adult Sex Toys, Pleasure for Men", link: "https://amzn.to/4oJRbsF", image: "https://m.media-amazon.com/images/I/41F0Uik0ODL._AC_SL1087_.jpg", price: "$65.99", cat: "Toys & Vibrators Adult" },
                     { title: "Sex Doll Male Masturbator for Men Flesh Pocket Pussies Light Pleasure Sex Toys for Men,4.18 LB Realistic Entry-Level Ass,2 in 1 Lifelike Butt with Vagina and Anal Channel", link: "https://amzn.to/3XOgbE0", image: "https://m.media-amazon.com/images/I/51ikt4go-zL._AC_SL1000_.jpg", price: "$17.99", cat: "Toys & Vibrators Adult" },
-                    { title: "Hipgaga Sex Doll Male Masturbator Realistic Pocket Pussy Doll Adult Toys, 6 Lb Small Sex Dolls Ass Toy with Tight Pussy Anus, Male Sex Toys for Men Sex Toy Stroker Vagina Toy Sex Torso Big Butt", link: "https://amzn.to/4aL37GZ", image: "https://m.media-amazon.com/images/I/71hf7xN5KgL._AC_SL1500_.jpg", price: "$39.99", cat: "Toys & Vibrators Adult" },
-                
+                    { title: "Hipgaga Sex Doll Male Masturbator Realistic Pocket Pussy Doll Adult Toys, 6 Lb Small Sex Dolls Ass Toy with Tight Pussy Anus, Male Sex Toys for Men Sex Toy Stroker Vagina Toy Sex Torso Big Butt", link: "https://amzn.to/4aL37GZ", image: "https://m.media-amazon.com/images/I/71hf7xN5KgL._AC_SL1500_.jpg", price: "$39.99", cat: "Toys & Vibrators Adult" }
+                ];
+
+                // ================= PART 0: FRESH ARRIVALS (WINTER & TOYS) =================
+                let freshArrivals = [
                     { title: "Quenteen Women Hoodies Dress Hooded Sweatshirts Dress Casual Long Sleeve Tunic Dress Oversized Sweatshirts with Pocket", link: "https://amzn.to/4oJELkf", image: "https://m.media-amazon.com/images/I/71azyzAE7mS._AC_SY879_.jpg", price: "$32.99", cat: "Hoodies" },
                     { title: "NUTEXROL Women’s Thickening Long Fleece Sweatshirt String Hoodie Dress Pullover Plus Size", link: "https://amzn.to/495wSB5", image: "https://m.media-amazon.com/images/I/51snnHAzAQL._AC_SX679_.jpg", price: "$37.25", cat: "Hoodies" },
                     { title: "GRACE KARIN Women’s Casual Pockets Zip up Hoodies Tunic Sweatshirt Long Hoodie Jacket", link: "https://amzn.to/4j0Bfkn", image: "https://m.media-amazon.com/images/I/71TAV3aDNLL._AC_SX679_.jpg", price: "$33.99", cat: "Hoodies" },
@@ -1075,8 +1078,11 @@
                     { title: "Women Workout Romper Yoga Ribbed Square Neck One Piece Seamless Tank Top Jumpsuit", link: "https://amzn.to/4rMAjnT", image: "https://m.media-amazon.com/images/I/81O92421vnL._AC_SY879_.jpg", price: "$14.99", cat: "Activewear" },
                     { title: "SUUKSESS Women Strappy Romper Seamless Jumpsuit Tummy Control Padded Sports Bra", link: "https://amzn.to/4iQLbwN", image: "https://m.media-amazon.com/images/I/51JdZfVkjmL._AC_SX679_.jpg", price: "$20.44", cat: "Activewear" },
                     { title: "niyokki One Piece Workout Jumpsuits for Women, Long Sleeve Workout Bodysuit, Bodycon Seamless Yoga Ribbed Active Romper", link: "https://amzn.to/4oMNQZC", image: "https://m.media-amazon.com/images/I/61xI58MQ6ML._AC_SY879_.jpg", price: "$25.99", cat: "Activewear" },
-                    { title: "Sexy Backless Cheeky High Cut Leg Thong V Neck One Piece Swimsuit", link: "https://amzn.to/4a9J5G7", image: "https://m.media-amazon.com/images/I/51NnJuhZHRL._AC_.jpg", price: "$33.99", cat: "One Piece" },
-                
+                    { title: "Sexy Backless Cheeky High Cut Leg Thong V Neck One Piece Swimsuit", link: "https://amzn.to/4a9J5G7", image: "https://m.media-amazon.com/images/I/51NnJuhZHRL._AC_.jpg", price: "$33.99", cat: "One Piece" }
+                ];
+
+                // ================= PART 1: NEW REQUEST ITEMS =================
+                let newRequestItems = [
                     { title: "Calvin Klein Women’s Modern Cotton Thong-Panty", link: "https://amzn.to/491zQqe", image: "https://m.media-amazon.com/images/I/61rpB6PFd9L._AC_SY879_.jpg", price: "$22.00", cat: "Underwear" },
                     { title: "T Back Sexy Low Rise Stretchy Invisible Patterns Lace Cotton Women Thongs Pack", link: "https://amzn.to/3XHKqfT", image: "https://m.media-amazon.com/images/I/81Pv55YMQKL._AC_SX679_.jpg", price: "$11.69", cat: "Underwear" },
                     { title: "Oneheekini Women Sexy Halterneck Tiny Mini Micro Bra Charming Bikini G String Bottom Beachwear 2 Pieces", link: "https://amzn.to/4a83YRT", image: "https://m.media-amazon.com/images/I/71MxLEJdG9L._AC_SY879_.jpg", price: "$12.99", cat: "Micro Bikini" },
@@ -1105,8 +1111,11 @@
                     { title: "Bliss Innovations Comfort 8-Piece Silicone Wellness Set", link: "https://amzn.to/3KIzBXO", image: "https://m.media-amazon.com/images/I/61bjKMp8AJL._AC_SL1500_.jpg", price: "$59.99", cat: "Wellness" },
                     { title: "Small Vaginal Dilators for Pelvic Floor Therapy & Vaginismus Pain Relief", link: "https://amzn.to/48uEQUb", image: "https://m.media-amazon.com/images/I/71jFbBXo3yL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$79.99", cat: "Wellness" },
                     { title: "4-Pack Silicone Pelvic Floor Muscle Dilator Trainer Set", link: "https://amzn.to/4aH6EGm", image: "https://m.media-amazon.com/images/I/41MDiwPOg8L._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$22.88", cat: "Wellness" },
-                    { title: "Large Vaginal Dilators for Pelvic Floor Therapy & Vaginismus Pain Relief", link: "https://amzn.to/4aHy7aV", image: "https://m.media-amazon.com/images/I/61r9t39P-wL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$99.99", cat: "Wellness" },
-                
+                    { title: "Large Vaginal Dilators for Pelvic Floor Therapy & Vaginismus Pain Relief", link: "https://amzn.to/4aHy7aV", image: "https://m.media-amazon.com/images/I/61r9t39P-wL._AC_SY300_SX300_QL70_FMwebp_.jpg", price: "$99.99", cat: "Wellness" }
+                ];
+
+                // ================= PART 2: LATEST COLLECTION =================
+                let latestCollection = [
                     { title: "26LB Lifelike Torso Sex Doll Male Masturbator for Men", link: "https://amzn.to/3MQ51w1", image: "https://m.media-amazon.com/images/I/51DDI0W6HML._AC_SL1000_.jpg", price: "$114.99", cat: "Toys & Vibrators Adult" },
                     { title: "Avidlove Women Sexy Lingerie Teddy One Piece Lace Halter Babydoll", link: "https://amzn.to/44MxXeE", image: "https://m.media-amazon.com/images/I/71pMUdz9mQL._AC_SY879_.jpg", price: "$14.99", cat: "Lingerie" },
                     { title: "Avidlove Women One Piece Lingerie Sexy Lace Bodysuit Deep V Teddy", link: "https://amzn.to/4iNi2mf", image: "https://m.media-amazon.com/images/I/81hYB+JhlYL._AC_SY879_.jpg", price: "$11.98", cat: "Lingerie" },
@@ -1192,8 +1201,11 @@
                     { title: "ADOVAKKER Women’s Underwear Low Rise Lady Micro Smooth Breathable Briefs", link: "https://amzn.to/4iUjUd0", image: "https://m.media-amazon.com/images/I/61YzgUkaiuL._AC_SX679_.jpg", price: "$23.99", cat: "Underwear" },
                     { title: "voenxe Seamless Women Underwear Thongs, No Show Ladies Thong, No Line", link: "https://amzn.to/3KyS60Z", image: "https://m.media-amazon.com/images/I/81IXUXq7eBL._AC_SX679_.jpg", price: "$14.99", cat: "Underwear" },
                     { title: "VISSAY Seamless G-String Thongs for Women No Show Ladies Thong Underwear", link: "https://amzn.to/4rOaHXr", image: "https://m.media-amazon.com/images/I/61orLpWGGaL._AC_SX679_.jpg", price: "$23.99", cat: "Underwear" },
-                    { title: "BODYZONE womens Comfort V Thong", link: "https://amzn.to/4oNRbYG", image: "https://m.media-amazon.com/images/I/61sXYBYxCiL._AC_SX679_.jpg", price: "$15.12", cat: "Underwear" },
-                
+                    { title: "BODYZONE womens Comfort V Thong", link: "https://amzn.to/4oNRbYG", image: "https://m.media-amazon.com/images/I/61sXYBYxCiL._AC_SX679_.jpg", price: "$15.12", cat: "Underwear" }
+                ];
+
+                // ================= PART 3: NEW ARRIVALS (Previous) =================
+                let newArrivals = [
                     { title: "Exhibitionist Teddy Bear with Dildo Glow-in-The-Dark, Novelty Adult Sex Toys", link: "https://amzn.to/3XIvZbi", cat: "Toys & Vibrators Adult", price: "$47.99", image: "https://m.media-amazon.com/images/I/61jqATlye5L._AC_SL1500_.jpg" },
                     { title: "6.8LB Male Sex Doll with Dildo, Adult Torso Sex Doll Toys with 7.08in Huge Dildos", link: "https://amzn.to/4puG33Y", cat: "Toys & Vibrators Adult", price: "$49.99", image: "https://m.media-amazon.com/images/I/616AVeHohbL._AC_SL1500_.jpg" },
                     { title: "10.8LB Male Sex Doll with Flexible Dildo, Realistic Sex Dolls 6.8in Huge Cock", link: "https://amzn.to/48XQTJL", cat: "Toys & Vibrators Adult", price: "$59.99", image: "https://m.media-amazon.com/images/I/61RTF1oDdwL._AC_SL1500_.jpg" },
@@ -1214,14 +1226,20 @@
                     { title: "Sex Doll Male Masturbator Realistic Pocket Pussies for Men, Big Ass Male Love Doll", link: "https://amzn.to/44JLtzG", cat: "Toys & Vibrators Adult", price: "$29.99", image: "https://m.media-amazon.com/images/I/71fnwaTkk1L._AC_SL1500_.jpg" },
                     { title: "BBW Sex Doll Pocket Pussy Ass Male Masturbator with Thickened Vulva, Realistic Toy", link: "https://amzn.to/4oGoQDm", cat: "Toys & Vibrators Adult", price: "$29.99", image: "https://m.media-amazon.com/images/I/61Db6UyCB-L._AC_SL1000_.jpg" },
                     { title: "TIVINO Vibrating Male Masturbator Sex Doll, 6LB Realistic Torso with Perky Boobs", link: "https://amzn.to/4pWXeL9", cat: "Toys & Vibrators Adult", price: "$51.99", image: "https://m.media-amazon.com/images/I/51J24nb7ynL._AC_SL1000_.jpg" },
-                    { title: "7.87 Inches Realistic Dildo Male Masturbators with Pocket Pussy, Soft TPE Sleeve", link: "https://amzn.to/4pqujzk", cat: "Toys & Vibrators Adult", price: "$15.99", image: "https://m.media-amazon.com/images/I/51mXShXkj+L._AC_SL1001_.jpg" },
-                
+                    { title: "7.87 Inches Realistic Dildo Male Masturbators with Pocket Pussy, Soft TPE Sleeve", link: "https://amzn.to/4pqujzk", cat: "Toys & Vibrators Adult", price: "$15.99", image: "https://m.media-amazon.com/images/I/51mXShXkj+L._AC_SL1001_.jpg" }
+                ];
+
+                // ================= PART 4: ORIGINAL SPECIAL PRODUCTS =================
+                let oldSpecialProducts = [
                     { title: "33LB Life Size Sex Doll Big Ass Male Masturbator Fake Pussy, Soft Female Sex Doll", link: "https://amzn.to/4oKnuYu", cat: "Toys & Vibrators Adult", price: "$145.69", image: "https://m.media-amazon.com/images/I/61vXNAK41YL._AC_SL1500_.jpg" },
                     { title: "Exhibitionist Teddy Bear with Dildo Glow-in-The-Dark, Novelty Adult Sex Toys Fun", link: "https://amzn.to/3KEpFyH", cat: "Toys & Vibrators Adult", price: "$47.99", image: "https://images.unsplash.com/photo-1559454403-b8fb87521bc5?q=80&w=600&auto=format&fit=crop" },
                     { title: "10.8LB Male Sex Doll with Flexible Dildo, Isskis Realistic Sex Dolls 6.8in Huge Cock", link: "https://amzn.to/3KIcFbb", cat: "Toys & Vibrators Adult", price: "$59.98", image: "https://images.unsplash.com/photo-1520302252119-906cb8c3f4e2?q=80&w=600&auto=format&fit=crop" },
                     { title: "Women Couples Rose Pearl Thong Wearable Panty Vibrator, BDSM Grinding Vibrating", link: "https://amzn.to/4iNcDLN", cat: "Wearable", price: "$19.99", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop" },
-                    { title: "Sex Toys - Vibrator Dildo and Anal Plug 3 in 1, App and Remote Control Vibrator", link: "https://amzn.to/4aA1vQj", cat: "Toys & Vibrators Adult", price: "$21.99", image: "https://images.unsplash.com/photo-1629196914375-f7e48f477b6d?q=80&w=600&auto=format&fit=crop" },
-                
+                    { title: "Sex Toys - Vibrator Dildo and Anal Plug 3 in 1, App and Remote Control Vibrator", link: "https://amzn.to/4aA1vQj", cat: "Toys & Vibrators Adult", price: "$21.99", image: "https://images.unsplash.com/photo-1629196914375-f7e48f477b6d?q=80&w=600&auto=format&fit=crop" }
+                ];
+
+                // ================= PART 5: EXISTING PRODUCTS (Swimwear/Lingerie) =================
+                let products = [
                     { title: "TASHEHE Women's Triangle Thong Bikini Set Sexy String Brazillian Two Piece", link: "https://amzn.to/4pniJoz", cat: "Bikini Sets", price: "$24.99" },
                     { title: "RSLOVE Women's Sexy Santa Christmas Lingerie Set Babydoll Lace Chemises", link: "https://amzn.to/4piwNjj", cat: "Christmas Lingerie", price: "$21.99" },
                     { title: "Christmas Lingerie for Women Deep V Sexy Santa Outfits Babydoll with Hat", link: "https://amzn.to/4pOP6fH", cat: "Christmas Lingerie", price: "$19.99" },
@@ -1822,21 +1840,171 @@
                     "https://amzn.to/3KMaBPt", "https://amzn.to/4oFpaCq"
                 ];
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.getElementById('grid');
-  const loadingMsg = document.getElementById('loading-msg');
+                // Merge Generated Toys (Price Hidden)
+                toyLinks.forEach((url, index) => {
+                    products.push({
+                        title: `Adult Toy/Dolls ${index + 1}`,
+                        link: url,
+                        cat: "Toys & Vibrators Adult", 
+                        price: "" // PRICE HIDDEN
+                    });
+                });
 
-  grid.innerHTML = latestManualAdditionsDec26.map(p => `
-    <div class="card">
-      <h3>${p.title}</h3>
-      <a href="${p.link}" target="_blank">Buy Now</a>
-    </div>
-  `).join('');
+                // COMBINE ALL LISTS - NEWEST REQUEST ADDED FIRST
+                const rawProducts = [...latestManualAdditionsDec26, ...latestManualAdditionsDec18, ...latestRequestsDec17, ...newestAdditions, ...sleepwearRequests, ...manualAdditions, ...ultimateBatchRequests, ...newBatchRequests, ...techAndWellnessRequests, ...latestAddedRequests, ...addedRequests, ...latestUpdateRequests, ...freshArrivals, ...newRequestItems, ...latestCollection, ...newArrivals, ...oldSpecialProducts, ...products];
 
-  loadingMsg.style.display = 'none';
-});
-</script>
+                // ================= PART 7: LOGIC & RENDERING & MERGING CATEGORIES =================
+                
+                // Merge Logic Function
+                const allProducts = rawProducts.map(p => {
+                    let c = p.cat;
+                    
+                    // 1. Toys & Vibrators Adult Merge (7 categories -> 1)
+                    if(['Adult Toy', 'Generated Toys', 'Male Masturbator', 'Novelty Toys', 'Sex Dolls', 'Sex Machine', 'Sex Machines', 'Vibrators'].includes(c)) {
+                        c = 'Adult Toys';
+                    }
+
+                    // 2. Hoodies Merge
+                    if(['Hoodie Dress', 'Sweatshirt Dress', 'Fleece Dress', 'Wearable Blanket'].includes(c)) {
+                        c = 'Hoodies';
+                    }
+
+                    // 3. Computers Merge
+                    if(['Laptops', 'Desktops'].includes(c)) {
+                        c = 'Computers';
+                    }
+
+                    // 4. Lingerie Merge
+                    if(['Lingerie Set'].includes(c)) {
+                        c = 'Lingerie';
+                    }
+
+                    // 5. Monokini Merge
+                    if(['Micro Monokini'].includes(c)) {
+                        c = 'Monokini';
+                    }
+
+                    // 6. Sleep Shirt Merge
+                    if(['Sleep Dress'].includes(c)) {
+                        c = 'Sleep Shirt';
+                    }
+
+                    // 7. Nightwear Merge (Pajamas -> Nightwear)
+                    if(['Pajamas'].includes(c)) {
+                        c = 'Nightwear';
+                    }
+                
+                    return { ...p, cat: c };
+        
+                });
+                window.masterProducts = [...allProducts];
+
+
+                const grid = document.getElementById('grid');
+                const searchInput = document.getElementById('search');
+                const filterContainer = document.getElementById('filters');
+                const loadingMsg = document.getElementById('loading-msg');
+
+                // Filter Buttons Logic
+                function createFilters() {
+                    const cats = ['All', ...new Set(allProducts.map(p => p.cat))].sort();
+                    filterContainer.innerHTML = '';
+
+                    cats.forEach(cat => {
+                        let count = (cat === 'All') ? allProducts.length : allProducts.filter(p => p.cat === cat).length;
+                        const btn = document.createElement('button');
+                        btn.className = 'filter-btn';
+                        if(cat === 'All') btn.classList.add('active');
+                        btn.innerHTML = `${cat} <span class="count-badge">${count}</span>`;
+                        btn.onclick = () => {
+                            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            render(cat, searchInput.value);
+                        };
+                        filterContainer.appendChild(btn);
+                    });
+                }
+
+                // Render Grid Logic
+                function render(category = 'All', search = '') {
+    grid.innerHTML = '';
+    const term = search.toLowerCase();
+
+    // 1. Master Products سے شروع کرو - 1200 والے
+    let productsToRender = [...window.masterProducts];
+       
+    // 2. Category Filter
+    if (category!== 'All') {
+        productsToRender = productsToRender.filter(p => p.cat === category);
+    }
+
+    // 3. Search Filter
+    if (term) {
+        productsToRender = productsToRender.filter(p =>
+            (p.name || p.title || '').toLowerCase().includes(term)
+        );
+    }
+
+    // Limit for Main Page - 200 Products Only
+if (category === 'All' && !term) {
+    productsToRender = productsToRender.slice(0, 200);
+}
+
+    // 5. No Products Found
+    if (productsToRender.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
+        return;
+    }
+
+    // 6. Render - تمہارا پرانا Card والا Code
+    productsToRender.forEach(p => {
+        let icon = 'fa-box';
+        let lowerCat = (p.cat || '').toLowerCase();
+        if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
+            icon = 'fa-shirt';
+        } else if (lowerCat.includes('book')) {
+            icon = 'book';
+        }
+
+        let visualContent = '';
+        visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;" onerror="this.onerror=null; this.src='https://img.sanishtech.com/u/7a25959931ec0a91d89953cb73781945.jpg'; this.style.background='#000';">`;
+        const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
+        const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
+        const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
+
+        let html = `
+            <div class="product-card">
+                <div class="product-image">${visualContent}</div>
+                <div class="product-info">
+                    <h3>${p.title || p.name}</h3>
+                    ${priceDisplay}
+                    <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+        `;
+        grid.innerHTML += html;
+    });
+}
+
+                // Initialize
+                loadingMsg.style.display = 'none';
+                createFilters();
+                render();
+
+                // Search Event
+                searchInput.addEventListener('keyup', (e) => {
+                    const activeBtn = document.querySelector('.filter-btn.active');
+                    let currentCat = 'All';
+                    if(activeBtn) currentCat = activeBtn.childNodes[0].textContent.trim();
+                    render(currentCat, e.target.value);
+                });
+
+            } catch (error) {
+                document.getElementById('loading-msg').innerText = "Error loading products: " + error.message;
+                console.error(error);
+            }
+        });
+        </script>
 
 </body>
 </html>
