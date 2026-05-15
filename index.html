@@ -2011,7 +2011,7 @@
         }
 
         let visualContent = '';
-        visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;" onerror="this.onerror=null; this.src='https://img.sanishtech.com/u/7a25959931ec0a91d89953cb73781945.jpg'; this.style.background='#000';">`;
+        visualContent = `<img src="https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;">`;
         const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
         const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
         const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
