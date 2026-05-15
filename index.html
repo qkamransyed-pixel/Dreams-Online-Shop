@@ -2002,31 +2002,35 @@
 
     // 6. Render - تمہارا پرانا Card والا Code
  productsToRender.forEach(p => {
-    console.log("Loading product:", p.title);
-    
     let icon = 'fa-box';
     let lowerCat = (p.cat || '').toLowerCase();
-    if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
+    if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion')) {
         icon = 'fa-shirt';
     } else if (lowerCat.includes('book')) {
-        icon = 'book';
+        icon = 'fa-book';
     }
 
     let visualContent = `<img src="https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;">`;
-    const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
-    const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
-    const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
+    const priceDisplay = (p.price === "") ? "" : `<div class="price">${p.price}</div>`;
+    const linkUrl = (p.link && p.link.trim()!="") ? p.link : "#";
+    const targetAttr = (p.link && p.link.trim()!="") ? ' target="_blank"' : '';
 
     let html = `
-      <div class="product-card">
-        <div class="product-image">${visualContent}</div>
-        <div class="product-info">
-          <h3>${p.title || p.name}</h3>
-          ${priceDisplay}
-          <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
-        </div>
+    <div class="product-card">
+      <div class="product-image">${visualContent}</div>
+      <div class="product-info">
+        <h3>${p.title || p.name}</h3>
+        ${priceDisplay}
+        <a href="${linkUrl}" ${targetAttr} class="btn">Buy Now</a>
       </div>
+    </div>
     `;
+
+    const grid = document.querySelector('.products-grid') || document.querySelector('#products') || document.querySelector('.grid');
+    if (grid) {
+        grid.innerHTML += html;
+    }
+});
     
     const grid = document.querySelector('.products-grid') || document.querySelector('#products') || document.querySelector('.product-container');
     if (grid) {
