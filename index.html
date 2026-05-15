@@ -1880,136 +1880,57 @@ window.addEventListener('DOMContentLoaded', () => {
                     "https://amzn.to/3Mjgi89", "https://amzn.to/3XFOIEy", "https://amzn.to/44fprVk", "https://amzn.to/4a3wxQA", 
                     "https://amzn.to/3KMaBPt", "https://amzn.to/4oFpaCq"
                 ];
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('search');
+const filterContainer = document.getElementById('filters');
+const loadingMsg = document.getElementById('loading-msg');
+const allProducts = window.masterProducts;
 
-                                // Merge Generated Toys (Price Hidden)
-                toyLinks.forEach((url, index) => {
-                    products.push({
-                        title: `Adult Toy/Dolls ${index + 1}`,
-                        link: url,
-                        cat: "Toys & Vibrators Adult", 
-                        price: "" // PRICE HIDDEN
-                    });
-                });
-                // COMBINE ALL LISTS - NEWEST REQUEST ADDED FIRST
-                productsToRender = latestManualAdditionsDec26;
-console.log("Products loaded:", productsToRender.length);
-
-render();
-                // ================= PART 7: LOGIC & RENDERING & MERGING CATEGORIES =================
-                
-                // Merge Logic Function
-                const allProducts = rawProducts.map(p => {
-                    let c = p.cat;
-                    
-                    // 1. Toys & Vibrators Adult Merge (7 categories -> 1)
-                    if(['Adult Toy', 'Generated Toys', 'Male Masturbator', 'Novelty Toys', 'Sex Dolls', 'Sex Machine', 'Sex Machines', 'Vibrators'].includes(c)) {
-                        c = 'Adult Toys';
-                    }
-
-                    // 2. Hoodies Merge
-                    if(['Hoodie Dress', 'Sweatshirt Dress', 'Fleece Dress', 'Wearable Blanket'].includes(c)) {
-                        c = 'Hoodies';
-                    }
-
-                    // 3. Computers Merge
-                    if(['Laptops', 'Desktops'].includes(c)) {
-                        c = 'Computers';
-                    }
-
-                    // 4. Lingerie Merge
-                    if(['Lingerie Set'].includes(c)) {
-                        c = 'Lingerie';
-                    }
-
-                    // 5. Monokini Merge
-                    if(['Micro Monokini'].includes(c)) {
-                        c = 'Monokini';
-                    }
-
-                    // 6. Sleep Shirt Merge
-                    if(['Sleep Dress'].includes(c)) {
-                        c = 'Sleep Shirt';
-                    }
-
-                    // 7. Nightwear Merge (Pajamas -> Nightwear)
-                    if(['Pajamas'].includes(c)) {
-                        c = 'Nightwear';
-                    }
-                
-                    return { ...p, cat: c };
-        
-                });
-                window.masterProducts = [...allProducts];
-
-
-                const grid = document.getElementById('grid');
-                const searchInput = document.getElementById('search');
-                const filterContainer = document.getElementById('filters');
-                const loadingMsg = document.getElementById('loading-msg');
-
-                // Filter Buttons Logic
-                function createFilters() {
-                    const cats = ['All', ...new Set(allProducts.map(p => p.cat))].sort();
-                    filterContainer.innerHTML = '';
-
-                    cats.forEach(cat => {
-                        let count = (cat === 'All') ? allProducts.length : allProducts.filter(p => p.cat === cat).length;
-                        const btn = document.createElement('button');
-                        btn.className = 'filter-btn';
-                        if(cat === 'All') btn.classList.add('active');
-                        btn.innerHTML = `${cat} <span class="count-badge">${count}</span>`;
-                        btn.onclick = () => {
-                            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                            btn.classList.add('active');
-                            render(cat, searchInput.value);
-                        };
-                        filterContainer.appendChild(btn);
-                    });
-                }
-
-                // Render Grid Logic
-                function render(category = 'All', search = '') {
-    grid.innerHTML = '';
-    const term = search.toLowerCase();
-
-    // 1. Master Products سے شروع کرو - 1200 والے
-    let productsToRender = [...window.masterProducts];
-       
-    // 2. Category Filter
-    if (category!== 'All') {
-        productsToRender = productsToRender.filter(p => p.cat === category);
-    }
-
-    // 3. Search Filter
-    if (term) {
-        productsToRender = productsToRender.filter(p =>
-            (p.name || p.title || '').toLowerCase().includes(term)
-        );
-    }
-
-    // Limit for Main Page - 200 Products Only
-if (category === 'All' && !term) {
-    productsToRender = productsToRender.slice(0, 200);
+function createFilters() {
+    const cats = ['All', ...new Set(allProducts.map(p => p.cat))].sort();
+    filterContainer.innerHTML = '';
+    cats.forEach(cat => {
+        let count = (cat === 'All') ? allProducts.length : allProducts.filter(p => p.cat === cat).length;
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.category = cat;
+        if(cat === 'All') btn.classList.add('active');
+        btn.innerHTML = `${cat} <span class="count-badge">${count}</span>`;
+        btn.onclick = () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render(cat, searchInput.value);
+        };
+        filterContainer.appendChild(btn);
+    });
 }
 
-    // 5. No Products Found
+function render(category = 'All', search = '') {
+    grid.innerHTML = '';
+    const term = search.toLowerCase();
+    let productsToRender = [...allProducts];
+    
+    if (category !== 'All') {
+        productsToRender = productsToRender.filter(p => p.cat === category);
+    }
+    if (term) {
+        productsToRender = productsToRender.filter(p =>
+            ((p.title || p.name || '')).toLowerCase().includes(term)
+        );
+    }
+    if (category === 'All' && !term) {
+        productsToRender = productsToRender.slice(0, 200);
+    }
     if (productsToRender.length === 0) {
         grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#555; font-size:1.2rem; margin-top:20px;">No products found.</p>';
+        loadingMsg.style.display = 'none';
         return;
     }
-
-    // 6. Render - تمہارا پرانا Card والا Code
     productsToRender.forEach(p => {
-        let icon = 'fa-box';
         let lowerCat = (p.cat || '').toLowerCase();
-        if (lowerCat.includes('dress') || lowerCat.includes('top') || lowerCat.includes('fashion') || lowerCat.includes('coat') || lowerCat.includes('cardigan') || lowerCat.includes('hoodie')) {
-            icon = 'fa-shirt';
-        } else if (lowerCat.includes('book')) {
-            icon = 'book';
-        }
-
-        let visualContent = '';
-        visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;" onerror="this.onerror=null; this.src='https://img.sanishtech.com/u/7a25959931ec0a91d89953cb73781945.jpg'; this.style.background='#000';">`;
+        let catClass = lowerCat.replace(/\s+/g, '-');
+                                 
+       let visualContent = `<img src="${p.image || 'https://raw.githubusercontent.com/qkamransyed-pixel/Dreams-Online-Shop/refs/heads/main/IMG-20260501-WA0102.jpg'}" alt="${p.title}" style="object-fit:contain; width:100%; height:250px; background:#000; padding:10px;" onerror="this.onerror=null; this.src='https://img.sanishtech.com/u/7a25959931ec0a91d89953cb73781945.jpg'; this.style.background='#000';">`;
         const priceDisplay = (p.price === "")? '' : `<div class="price">${p.price}</div>`;
         const linkUrl = (p.link && p.link.trim()!== "")? p.link : '#';
         const targetAttr = (p.link && p.link.trim()!== "")? 'target="_blank"' : '';
