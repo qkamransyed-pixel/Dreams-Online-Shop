@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQs - Dream Shopping Shop</title>
+  <style>
+    body { margin: 0; padding-top: 60px; font-family: 'Arial', sans-serif; background: #0a0a0a; color: #fff; }
+    .header-nav { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .header-nav a { color: #fff; margin: 0 25px; font-size: 16px; text-decoration: none; transition: 0.3s; }
+    .header-nav a:hover { color: #ff6b9d; }
+    .container { max-width: 900px; margin: 50px auto; padding: 0 20px; text-align: center; }
+    h1 { font-size: 42px; color: #ff6b9d; margin-bottom: 20px; }
+    .subtitle { font-size: 18px; color: #ccc; margin-bottom: 40px; }
+    .box { background: #1a1a1a; padding: 30px; border-radius: 12px; margin-bottom: 25px; border-left: 4px solid #ff6b9d; text-align: left; }
+    .box h2 { color: #ff6b9d; margin-top: 0; }
+    .box p { line-height: 1.8; color: #ddd; font-size: 16px; }
+    .highlight { color: #ff6b9d; font-weight: bold; }
+    .faq { margin-bottom: 20px; }
+    .question { font-weight: bold; cursor: pointer; color: #ff6b9d; }
+    .answer { display: none; padding: 10px; color: #ddd; }
+  </style>
+</head>
+<body>
+  <div class="header-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="faqs.html">FAQs</a>
+  </div>
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p class="subtitle">Answers to common questions</p>
+
+    <div class="box">
+      <div class="faq">
+        <div class="question">Q: What is Dream Shopping Shop?</div>
+        <div class="answer">A: Dream Shopping Shop is a curated collection hub for gadgets, tech, lifestyle, and fashion essentials.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: How do I place an order?</div>
+        <div class="answer">A: Click on the product, and you'll be redirected to the seller's page to complete your purchase.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: What is the return policy?</div>
+        <div class="answer">A: Returns and exchanges are handled by the seller. Check their policy for details.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: Is my payment secure?</div>
+        <div class="answer">A: Yes, payments are processed securely through the seller's website.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: Do you offer cash on delivery?</div>
+        <div class="answer">A: COD is available in select areas. Check during checkout.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: How long does shipping take?</div>
+        <div class="answer">A: Shipping times vary by product and location. Check estimates on product pages.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: Can I track my order?</div>
+        <div class="answer">A: Yes, tracking details are provided via email/SMS or on seller's website Track Your Order.</div>
+      </div>
+      <div class="faq">
+        <div class="question">Q: Are products genuine?</div>
+        <div class="answer">A: Yes, We review product photos, customer feedback, material specs, and price points. If a product meets our standards for comfort, quality, and design, it makes it to our Precious Collection 2026. We partner with trusted sellers and brands.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        q.nextElementSibling.style.display = 
+          q.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
