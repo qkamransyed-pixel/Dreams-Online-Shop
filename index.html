@@ -2194,5 +2194,17 @@ searchInput.addEventListener('input', (e) => {
  100% { bottom: 20px; }
 }
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const grid = document.querySelector(".products-grid");
+  if (!grid) return;
+  const cards = Array.from(grid.children);
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    grid.appendChild(cards[j]);
+  }
+});
+</script>
+    
 </body>
 </html>
